@@ -116,7 +116,6 @@
   --second-family: "Comfortaa", sans-serif;
 }
 
-<<<<<<< HEAD
 *,
 *::before,
 *::after {
@@ -194,16 +193,6 @@ textarea {
 
 .no-scroll {
   overflow: hidden;
-=======
-body {
-  font-size: 14px;
-  font-family: var(--font-family);
-}
-.container {
-  margin: 0 auto;
-  width: 375px;
-  padding: 0 20px;
->>>>>>> 0fb8487 (improv: added register form and validation to it)
 }
 .container {
   width: 375px;
