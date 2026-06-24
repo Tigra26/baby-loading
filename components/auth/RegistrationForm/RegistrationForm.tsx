@@ -1,7 +1,10 @@
+"use client";
+import { register } from "@/lib/api/authApi";
 import css from "./RegistrationForm.module.css";
-import { registerSchema } from "@/schema/registerSchema";
+import { registerSchema } from "@/schema/authSchema";
 import { RegisterProps } from "@/types/auth";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useMutation } from "@tanstack/react-query";
+import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import Link from "next/link";
 
 const initialValues = {
@@ -11,8 +14,16 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
+  const { mutate } = useMutation({
+    mutationKey: ["register"],
+    mutationFn: register,
+    onSuccess: (data) => console.log("work", data),
+    onError: () => {
+      console.log("error");
+    },
+  });
   const handleRegister = (values: RegisterProps) => {
-    console.log(values);
+    mutate(values);
   };
   return (
     <div className={css.registrationPage}>
@@ -25,36 +36,57 @@ const RegistrationForm = () => {
         <Form className={css.registrationForm}>
           <label className={css.registrationFormsLabel}>
             <span>Ім`я*</span>
-            <Field
+            <Field name="name">
+              {({ field, meta }: FieldProps) => (
+                <input
+                  {...field}
+                  type="text"
+                  placeholder="Ім'я"
+                  className={`${css.registrationFormsInput} ${meta.error && meta.touched ? css.registrationFormsInputError : ""}`}
+                />
+              )}
+            </Field>
+            <ErrorMessage
               name="name"
-              as="input"
-              type="text"
-              className={css.registrationFormsInput}
-              placeholder="Ваше ім'я"
+              className={css.errorMessage}
+              component={"span"}
             />
-            <ErrorMessage name="name" />
           </label>
           <label className={css.registrationFormsLabel}>
-            <span>Email*</span>
-            <Field
+            <span>Пошта*</span>
+            <Field name="email">
+              {({ field, meta }: FieldProps) => (
+                <input
+                  {...field}
+                  type="text"
+                  placeholder="hello@leleka.com"
+                  className={`${css.registrationFormsInput} ${meta.error && meta.touched ? css.registrationFormsInputError : ""}`}
+                />
+              )}
+            </Field>
+            <ErrorMessage
               name="email"
-              as="input"
-              type="email"
-              className={css.registrationFormsInput}
-              placeholder="hello@leleka.com"
+              className={css.errorMessage}
+              component={"span"}
             />
-            <ErrorMessage name="email" />
           </label>
           <label className={css.registrationFormsLabel}>
             <span>Пароль*</span>
-            <Field
+            <Field name="password">
+              {({ field, meta }: FieldProps) => (
+                <input
+                  {...field}
+                  type="password"
+                  placeholder="Пароль"
+                  className={`${css.registrationFormsInput} ${meta.error && meta.touched ? css.registrationFormsInputError : ""}`}
+                />
+              )}
+            </Field>
+            <ErrorMessage
               name="password"
-              as="input"
-              type="password"
-              className={css.registrationFormsInput}
-              placeholder="********"
+              className={css.errorMessage}
+              component={"span"}
             />
-            <ErrorMessage name="password" />
           </label>
 
           <button type="submit" className={css.registrationFormsButton}>
@@ -64,7 +96,9 @@ const RegistrationForm = () => {
       </Formik>
       <div className={css.authRedirect}>
         <p>Вже маєте аккаунт?</p>
-        <Link href="./auth/login">Увійти</Link>
+        <Link href="/auth/login" className={css.redirectLink}>
+          Увійти
+        </Link>
       </div>
     </div>
   );

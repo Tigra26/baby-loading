@@ -136,3 +136,13 @@ textarea {
 .no-scroll {
   overflow: hidden;
 }
+.container {
+  width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 0 32px;
+  }
+}
