@@ -5,6 +5,9 @@ import { LoginProps } from "@/types/auth";
 import { useMutation } from "@tanstack/react-query";
 import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import useAuthStore from "@/lib/store/authStore";
 
 const initialValues = {
   email: "",
@@ -12,9 +15,18 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const { setUser } = useAuthStore();
+  const router = useRouter();
   const { mutate } = useMutation({
     mutationKey: ["login"],
     mutationFn: login,
+    onSuccess: ({ data }) => {
+      setUser(data);
+      router.replace("/");
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
   });
 
   const handleLogin = (values: LoginProps) => {
@@ -64,7 +76,7 @@ const LoginForm = () => {
             />
           </div>
           <button type="submit" className={css.loginFormsButton}>
-            Зареєструватись
+            Вхід
           </button>
         </Form>
       </Formik>

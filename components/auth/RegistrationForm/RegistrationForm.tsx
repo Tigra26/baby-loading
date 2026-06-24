@@ -6,6 +6,8 @@ import { RegisterProps } from "@/types/auth";
 import { useMutation } from "@tanstack/react-query";
 import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const initialValues = {
   name: "",
@@ -14,12 +16,15 @@ const initialValues = {
 };
 
 const RegistrationForm = () => {
+  const router = useRouter();
   const { mutate } = useMutation({
     mutationKey: ["register"],
     mutationFn: register,
-    onSuccess: (data) => console.log("work", data),
-    onError: () => {
-      console.log("error");
+    onSuccess: () => {
+      router.replace("/auth/login");
+    },
+    onError: (error) => {
+      toast.error(error.message);
     },
   });
   const handleRegister = (values: RegisterProps) => {

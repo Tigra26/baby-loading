@@ -16,10 +16,9 @@ const Page = () => {
   if (!(slug in authTypeMap)) {
     notFound();
   }
-  console.log(authTypeMap[slug]);
   return (
     <section className={css.authSection}>
-      <div className={`container ${css.authContainer}`}>
+      <div className={`container ` + css.authContainer}>
         {authTypeMap[slug] ? <RegistrationForm /> : <LoginForm />}
       </div>
     </section>
