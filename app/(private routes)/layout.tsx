@@ -1,6 +1,6 @@
-import  Header  from "@/components/(layout)/Header/Header";
-import  SideBar  from "@/components/(layout)/Sidebar/Sidebar";
-import  Breadcrumbs  from "@/components/(layout)/Breadcrumbs/Breadcrumbs";
+import  Header  from "@/components/layout/Header/Header";
+import  SideBar  from "@/components/layout/Sidebar/Sidebar";
+import  Breadcrumbs  from "@/components/layout/Breadcrumbs/Breadcrumbs";
 
 type PrivateLayoutProps = {
   children: React.ReactNode;
