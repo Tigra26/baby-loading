@@ -3,11 +3,11 @@ import * as Yup from "yup";
 export const loginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Введіть правильну електрону пошту")
-    .max(64, "Пошта має мати 64 символи")
+    .max(64, "Пошта має мати максимум 64 символи")
     .required(`Поле пошта не може бути порожнім`),
   password: Yup.string()
     .min(8, "Пароль має мати мінімум 8 символів")
-    .max(64, "Пароль має мати мінімум 64 символа")
+    .max(64, "Пароль має мати максимум 64 символа")
     .required("Поле пароль не може бути порожнім"),
 });
 export const registerSchema = loginSchema.shape({

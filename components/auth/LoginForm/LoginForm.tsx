@@ -1,3 +1,4 @@
+"use client";
 import { login } from "@/lib/api/authApi";
 import css from "./LoginForm.module.css";
 import { LoginProps } from "@/types/auth";
@@ -6,9 +7,9 @@ import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import useAuthStore from "@/lib/store/authStore";
 import { loginSchema } from "@/lib/validation/authSchemas";
 import { User } from "@/types/user";
+import { useAuthStore } from "@/lib/store/authStore";
 
 const initialValues = {
   email: "",
@@ -47,7 +48,7 @@ const LoginForm = () => {
               {({ field, meta }: FieldProps) => (
                 <input
                   {...field}
-                  type="text"
+                  type="email"
                   placeholder="hello@leleka.com"
                   className={`${css.loginFormsInput} ${meta.error && meta.touched ? css.loginFormsInputError : ""}`}
                 />

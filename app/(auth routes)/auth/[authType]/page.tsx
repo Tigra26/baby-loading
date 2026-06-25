@@ -17,7 +17,7 @@ const Page = () => {
     notFound();
   }
   return (
-    <section className={css.authSection}>
+    <section>
       <div className={`container ` + css.authContainer}>
         {authTypeMap[slug] ? <RegistrationForm /> : <LoginForm />}
       </div>
