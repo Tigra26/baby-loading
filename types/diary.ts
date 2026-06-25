@@ -1,5 +1,5 @@
 export interface DiaryProps {
-  Task: [];
+  tasks: Task[];
   totalCount: 23;
   totalPages: 3;
   page: 1;
@@ -9,7 +9,7 @@ export interface Task {
   _id: string;
   title: string;
   date: string;
-  Emotion: [];
+  emotions: Emotion[];
   description: string;
 }
 
