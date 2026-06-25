@@ -1,8 +1,15 @@
-export default function DiaryNotePage() {
-  return (
-    <main>
-      <h1>Diary note page</h1>
-      <p>This page is under development.</p>
-    </main>
-  );
+import DiaryEntryDetails from "@/components/diary/DiaryEntryDetails/DiaryEntryDetails";
+
+interface DiaryNotePage {
+  id: Promise<{ id: string }>;
 }
+
+const DiaryNotePage = async ({ id }: DiaryNotePage) => {
+  return (
+    <>
+      <DiaryEntryDetails params={id} />;
+    </>
+  );
+};
+
+export default DiaryNotePage;

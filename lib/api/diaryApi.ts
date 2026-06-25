@@ -1,7 +1,13 @@
 import { DiaryProps } from "@/types/diary";
 import { apiClient } from "./client";
+import { cookies } from "next/headers";
 
 export const getDiaryList = async (): Promise<DiaryProps> => {
-  const response = await apiClient.get("/diary");
+  const cookieStore = await cookies();
+  const response = await apiClient.get("/diary", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
   return response.data;
 };

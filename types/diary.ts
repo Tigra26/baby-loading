@@ -1,11 +1,11 @@
 export interface DiaryProps {
-  tasks: Task[];
-  totalCount: 23;
-  totalPages: 3;
-  page: 1;
+  diaryNotes: Note[];
+  totalCount: number;
+  totalPages: number;
+  page: number;
 }
 
-export interface Task {
+export interface Note {
   _id: string;
   title: string;
   date: string;

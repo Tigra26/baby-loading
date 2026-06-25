@@ -1,3 +1,5 @@
+"use client";
+
 import { DiaryProps } from "@/types/diary";
 import DiaryEntryCard from "../DiaryEntryCard/DiaryEntryCard";
 
@@ -6,6 +8,7 @@ interface DiaryListProps {
 }
 
 const DiaryList = ({ diary }: DiaryListProps) => {
+  console.log(diary);
   return (
     <>
       <div>
@@ -15,9 +18,9 @@ const DiaryList = ({ diary }: DiaryListProps) => {
           <button type="submit">+</button>
         </div>
         <ul>
-          {diary.tasks.map((task) => (
-            <li key={task._id}>
-              <DiaryEntryCard task={task} />
+          {diary.diaryNotes.map((note) => (
+            <li key={note._id}>
+              <DiaryEntryCard note={note} />
             </li>
           ))}
         </ul>

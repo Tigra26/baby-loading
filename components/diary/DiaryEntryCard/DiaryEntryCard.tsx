@@ -1,21 +1,25 @@
-import { Task } from "@/types/diary";
+import { Note } from "@/types/diary";
+import Link from "next/link";
 
 interface DiaryEntryCardProps {
-  task: Task;
+  note: Note;
 }
 
-const DiaryEntryCard = ({ task }: DiaryEntryCardProps) => {
+const DiaryEntryCard = ({ note }: DiaryEntryCardProps) => {
   return (
     <>
-      <div>
-        <h3>{task.title}</h3>
-        <p>{task.date}</p>
+      <Link href={`/books/${note._id}`}>
         <div>
-          {task.emotions.map((emotion) => (
+          <h3>{note.title}</h3>
+          <p>{note.date}</p>
+        </div>
+
+        <div>
+          {note.emotions.map((emotion) => (
             <p key={emotion._id}>{emotion.title}</p>
           ))}
         </div>
-      </div>
+      </Link>
     </>
   );
 };
