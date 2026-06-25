@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Lato, Comfortaa } from "next/font/google";
-import "./globals.css";
+import AuthProvider from "@/providers/AuthProvider";
 import TanStackProvider from "@/providers/TanStackProvider";
+import "./globals.css";
 
 const lato = Lato({
   subsets: ["latin", "latin-ext"],
@@ -30,7 +31,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="uk">
       <body className={`${lato.variable} ${comfortaa.variable}`}>
-        <TanStackProvider>{children}</TanStackProvider>
+        <TanStackProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </TanStackProvider>
       </body>
     </html>
   );
