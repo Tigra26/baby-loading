@@ -1,0 +1,43 @@
+.diaryList {
+  font-family: var(--font-lato);
+  color: var(--color-scheme-text);
+  border-radius: 32px;
+  padding: 24px 16px;
+  background: var(--color-scheme-foreground);
+  margin: 32px 20px;
+}
+
+.diaryHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.diaryTitle {
+  font-family: var(--font-comfortaa);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.diaryCreate {
+  display: flex;
+  gap: 8px;
+}
+
+.diaryCreateText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.diaryEmptyMessage {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.6;
+  border: 1px solid var(--color-scheme-foreground-alt);
+  border-radius: 16px;
+  padding: 16px;
+  background: var(--color-scheme-foreground-alt);
+}
