@@ -78,7 +78,7 @@ const LoginForm = () => {
             />
           </div>
           <button type="submit" className={css.loginFormsButton}>
-            Вхід
+            Увійти
           </button>
         </Form>
       </Formik>

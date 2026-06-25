@@ -5,6 +5,9 @@
   align-items: center;
   gap: 32px;
   width: 100%;
+  @media screen and (min-width: 1440px) {
+    padding: 0 120px;
+  }
 }
 
 .registrationPageTitle {
@@ -63,6 +66,13 @@
   background: var(--color-scheme-foreground-alt);
   cursor: pointer;
 }
+
+.registrationFormsButton:hover,
+.registrationFormsButton:focus {
+  background: var(--color-scheme-foreground);
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+}
+
 .authRedirect {
   display: flex;
   gap: 5px;

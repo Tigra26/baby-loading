@@ -5,6 +5,9 @@
   align-items: center;
   gap: 32px;
   width: 100%;
+  @media screen and (min-width: 1440px) {
+    padding: 0 120px;
+  }
 }
 
 .loginPageTitle {
@@ -63,7 +66,9 @@
   cursor: pointer;
 }
 
-.loginFormsButton:hover {
+.loginFormsButton:hover,
+.loginFormsButton:focus {
+  background: var(--color-scheme-foreground);
   border-bottom: 4px solid var(--opacity-neutral-darkest-15);
 }
 
