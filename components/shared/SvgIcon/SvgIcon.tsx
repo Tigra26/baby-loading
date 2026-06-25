@@ -13,7 +13,7 @@ import ArrowUpIcon from "@/assets/icons/keyboard_arrow_up.svg";
 import LogoutIcon from "@/assets/icons/logout.svg";
 import MenuIcon from "@/assets/icons/menu.svg";
 import TodayIcon from "@/assets/icons/today.svg";
-import LogoIcon from "@/assets/icons/logo.svg";
+import BreadcrumbsRight from "@/assets/icons/chevron_right.svg";
 
 const icons = {
   account: AccountCircleIcon,
@@ -31,7 +31,7 @@ const icons = {
   logout: LogoutIcon,
   menu: MenuIcon,
   today: TodayIcon,
-  logo: LogoIcon,
+  separator: BreadcrumbsRight,
 };
 
 export type IconName = keyof typeof icons;
