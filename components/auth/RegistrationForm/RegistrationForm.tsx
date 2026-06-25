@@ -1,13 +1,13 @@
 "use client";
 import { register } from "@/lib/api/authApi";
 import css from "./RegistrationForm.module.css";
-import { registerSchema } from "@/schema/authSchema";
 import { RegisterProps } from "@/types/auth";
 import { useMutation } from "@tanstack/react-query";
 import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { registerSchema } from "@/lib/validation/authSchemas";
 
 const initialValues = {
   name: "",

@@ -1,6 +1,5 @@
 import { login } from "@/lib/api/authApi";
 import css from "./LoginForm.module.css";
-import { loginSchema } from "@/schema/authSchema";
 import { LoginProps } from "@/types/auth";
 import { useMutation } from "@tanstack/react-query";
 import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
@@ -8,6 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import useAuthStore from "@/lib/store/authStore";
+import { loginSchema } from "@/lib/validation/authSchemas";
+import { User } from "@/types/user";
 
 const initialValues = {
   email: "",
@@ -20,7 +21,7 @@ const LoginForm = () => {
   const { mutate } = useMutation({
     mutationKey: ["login"],
     mutationFn: login,
-    onSuccess: ({ data }) => {
+    onSuccess: (data: User) => {
       setUser(data);
       router.replace("/");
     },
