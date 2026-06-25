@@ -8,7 +8,9 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const cookieStore = await cookies();
+
   const accessToken = cookieStore.get("accessToken")?.value;
+  const refreshToken = cookieStore.get("refreshToken")?.value;
 
   const isHomePage = pathname === "/";
   const isPrivateRoute =
@@ -18,7 +20,7 @@ export async function proxy(request: NextRequest) {
     pathname.startsWith(route)
   );
 
-  if (isPrivateRoute && !accessToken) {
+  if (isPrivateRoute && !accessToken && !refreshToken) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
