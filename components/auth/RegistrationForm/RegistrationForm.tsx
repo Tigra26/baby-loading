@@ -63,7 +63,7 @@ const RegistrationForm = () => {
               {({ field, meta }: FieldProps) => (
                 <input
                   {...field}
-                  type="text"
+                  type="email"
                   placeholder="hello@leleka.com"
                   className={`${css.registrationFormsInput} ${meta.error && meta.touched ? css.registrationFormsInputError : ""}`}
                 />
