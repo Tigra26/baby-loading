@@ -21,7 +21,7 @@ const RegistrationForm = () => {
     mutationKey: ["register"],
     mutationFn: register,
     onSuccess: () => {
-      router.replace("/auth/login");
+      router.replace("/");
     },
     onError: (error) => {
       toast.error(error.message);
