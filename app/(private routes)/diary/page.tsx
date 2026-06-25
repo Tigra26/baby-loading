@@ -4,6 +4,7 @@ import { getDiaryList } from "@/lib/api/diaryApi";
 
 const Diary = async () => {
   const diary = await getDiaryList();
+
   return (
     <>
       <GreetingBlock />
@@ -11,3 +12,5 @@ const Diary = async () => {
     </>
   );
 };
+
+export default Diary;
