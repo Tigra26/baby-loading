@@ -7,12 +7,13 @@ import DeleteIcon from "@/assets/icons/delete_forever.svg";
 import EditIcon from "@/assets/icons/edit_square.svg";
 import FitnessIcon from "@/assets/icons/fitness_center.svg";
 import ForkSpoonIcon from "@/assets/icons/fork_spoon.svg";
-import GoogleIcon from "@/assets/icons/google.svg";
+import GoogleIcon from "@/assets/icons/Google.svg";
 import ArrowDownIcon from "@/assets/icons/keyboard_arrow_down.svg";
 import ArrowUpIcon from "@/assets/icons/keyboard_arrow_up.svg";
 import LogoutIcon from "@/assets/icons/logout.svg";
 import MenuIcon from "@/assets/icons/menu.svg";
 import TodayIcon from "@/assets/icons/today.svg";
+import LogoIcon from "@/assets/icons/logo.svg";
 
 const icons = {
   account: AccountCircleIcon,
@@ -30,6 +31,7 @@ const icons = {
   logout: LogoutIcon,
   menu: MenuIcon,
   today: TodayIcon,
+  logo: LogoIcon,
 };
 
 export type IconName = keyof typeof icons;
