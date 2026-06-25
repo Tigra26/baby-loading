@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
           cookieStore.set("refreshToken", parsed.refreshToken, options);
       }
 
-      return NextResponse.json({ success: true }, { status: apiRes.status });
+      return NextResponse.json({ status: apiRes.status });
     }
 
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
