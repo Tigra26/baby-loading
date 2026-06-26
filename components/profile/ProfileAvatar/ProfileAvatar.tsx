@@ -85,29 +85,30 @@ export const ProfileAvatar = ({ profilePhotoUrl }: Props) => {
           </div>
         )}
       </div>
+      <div className={styles.metaContainer}>
+        <div className={styles.userInfo}>
+          <h2 className={styles.userName}>{user?.name || ""}</h2>
+          <p className={styles.userEmail}>{user?.email || ""}</p>
+        </div>
 
-      <div className={styles.userInfo}>
-        <h2 className={styles.userName}>{user?.name || ""}</h2>
-        <p className={styles.userEmail}>{user?.email || ""}</p>
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept="image/*"
+          className={styles.hiddenInput}
+          disabled={isUploading}
+        />
+
+        <button
+          type="button"
+          className={styles.uploadBtn}
+          onClick={handleButtonClick}
+          disabled={isUploading}
+        >
+          {isUploading ? "Збереження..." : "Завантажити нове фото"}
+        </button>
       </div>
-
-      <input
-        type="file"
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        accept="image/*"
-        className={styles.hiddenInput}
-        disabled={isUploading}
-      />
-
-      <button
-        type="button"
-        className={styles.uploadBtn}
-        onClick={handleButtonClick}
-        disabled={isUploading}
-      >
-        {isUploading ? "Збереження..." : "Завантажити нове фото"}
-      </button>
     </div>
   );
 };

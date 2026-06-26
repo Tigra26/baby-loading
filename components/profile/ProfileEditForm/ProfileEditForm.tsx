@@ -11,7 +11,6 @@ import { ProfileAvatar } from "../ProfileAvatar/ProfileAvatar";
 
 import css from "./ProfileEditForm.module.css";
 import ArrowDownIcon from "@/assets/icons/keyboard_arrow_down.svg";
-import ArrowUpIcon from "@/assets/icons/keyboard_arrow_up.svg";
 
 const GENDER_OPTIONS = [
   { value: "boy", label: "Хлопчик" },
