@@ -11,7 +11,7 @@ const DiaryNotePage = async ({ params }: DiaryNotePage) => {
 
   return (
     <>
-      <DiaryEntryDetails id={id} />;
+      <DiaryEntryDetails id={id} />
     </>
   );
 };

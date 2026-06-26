@@ -1,4 +1,4 @@
-.diaryList {
+.diary {
   font-family: var(--font-lato);
   color: var(--color-scheme-text);
   border-radius: 32px;
@@ -40,4 +40,10 @@
   border-radius: 16px;
   padding: 16px;
   background: var(--color-scheme-foreground-alt);
+}
+
+.diaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

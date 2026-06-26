@@ -1,5 +1,6 @@
 import { Note } from "@/types/diary";
 import Link from "next/link";
+import css from "./DiaryEntryCard.module.css";
 
 interface DiaryEntryCardProps {
   note: Note;
@@ -9,15 +10,19 @@ const DiaryEntryCard = ({ note }: DiaryEntryCardProps) => {
   return (
     <>
       <Link href={`/diary/${note._id}`}>
-        <div>
-          <h3>{note.title}</h3>
-          <p>{note.date}</p>
-        </div>
+        <div className={css.card}>
+          <div className={css.main}>
+            <h3 className={css.title}>{note.title}</h3>
+            <p className={css.date}>{note.date}</p>
+          </div>
 
-        <div>
-          {note.emotions.map((emotion) => (
-            <p key={emotion._id}>{emotion.title}</p>
-          ))}
+          <div className={css.emotionalBlock}>
+            {note.emotions.map((emotion) => (
+              <p className={css.emotional} key={emotion._id}>
+                {emotion.title}
+              </p>
+            ))}
+          </div>
         </div>
       </Link>
     </>
