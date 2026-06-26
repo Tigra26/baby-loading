@@ -3,9 +3,9 @@
   flex-direction: column;
   gap: 24px;
   padding: 0px 20px;
-  width: 100%;
 
   @media screen and (min-width: 1440px) {
+    width: 100%;
     max-width: 644px;
     padding: 0 32px;
   }
