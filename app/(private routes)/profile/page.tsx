@@ -1,3 +1,14 @@
-export default function Page() {
-  return <div>Page under development</div>;
-}
+"use client";
+
+import { ProfileEditForm } from "@/components/profile/ProfileEditForm/ProfileEditForm";
+import css from "./profilePage.module.css";
+
+const ProfilePage = () => {
+  return (
+    <main className={`container ${css.profilePageMain}`}>
+      <ProfileEditForm />
+    </main>
+  );
+};
+
+export default ProfilePage;

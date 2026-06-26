@@ -6,6 +6,7 @@ interface AuthStore {
   user: User | null;
   setUser: (user: User) => void;
   clearIsAuthenticated: () => void;
+  updateUserFields: (fields: Partial<User>) => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -16,6 +17,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
       user,
       isAuthenticated: true,
     }),
+
+  updateUserFields: (fields) =>
+    set((state) => ({
+      user: state.user ? { ...state.user, ...fields } : null,
+    })),
 
   clearIsAuthenticated: () =>
     set({
