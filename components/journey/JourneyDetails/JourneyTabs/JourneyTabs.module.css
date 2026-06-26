@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  padding: 4px;
+  border-radius: 100px;
+  background: var(--color-pastel-pink-lighter);
+}
+
+.tab {
+  flex: 1;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: transparent;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-scheme-text);
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  transition: background-color 250ms;
+}
+
+.tab.active {
+  font-weight: 500;
+  background: var(--color-pastel-pink-light);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--color-scheme-text);
+  outline-offset: 2px;
+}

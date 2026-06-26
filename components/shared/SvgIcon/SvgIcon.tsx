@@ -17,6 +17,7 @@ import BreadcrumbsRight from "@/assets/icons/chevron_right.svg";
 import NewNoteDiary from "@/assets/icons/new_note.svg";
 import AddNewTaskIcon from "@/assets/icons/add_circle_icon.svg";
 import CustomCheckboxIcon from "@/assets/icons/check_icon.svg";
+import StarIcon from "@/assets/icons/star_shine.svg";
 
 const icons = {
   account: AccountCircleIcon,
@@ -38,6 +39,7 @@ const icons = {
   separator: BreadcrumbsRight,
   addNote: NewNoteDiary,
   checkbox: CustomCheckboxIcon,
+  star: StarIcon,
 };
 
 export type IconName = keyof typeof icons;
