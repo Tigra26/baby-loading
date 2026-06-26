@@ -1,9 +1,10 @@
+import TaskReminderCard from "@/components/dashboard/TasksReminderCard/TaskReminderCard";
+
 const HomePage = () => {
   return (
-    <div>
-      <h1>Мій день</h1>
-      <p>Головна сторінка застосунку “Лелека”.</p>
-    </div>
+    <>
+      <TaskReminderCard />
+    </>
   );
 };
 

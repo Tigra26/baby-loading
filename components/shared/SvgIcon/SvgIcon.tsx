@@ -15,9 +15,12 @@ import MenuIcon from "@/assets/icons/menu.svg";
 import TodayIcon from "@/assets/icons/today.svg";
 import BreadcrumbsRight from "@/assets/icons/chevron_right.svg";
 import NewNoteDiary from "@/assets/icons/new_note.svg";
+import AddNewTaskIcon from "@/assets/icons/add_circle_icon.svg";
+import CustomCheckboxIcon from "@/assets/icons/check_icon.svg";
 
 const icons = {
   account: AccountCircleIcon,
+  add_circle_icon: AddNewTaskIcon,
   book: BookIcon,
   chair: ChairIcon,
   close: CloseIcon,
@@ -34,6 +37,7 @@ const icons = {
   today: TodayIcon,
   separator: BreadcrumbsRight,
   addNote: NewNoteDiary,
+  checkbox: CustomCheckboxIcon,
 };
 
 export type IconName = keyof typeof icons;
