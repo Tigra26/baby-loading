@@ -8,7 +8,7 @@ interface DiaryEntryCardProps {
 const DiaryEntryCard = ({ note }: DiaryEntryCardProps) => {
   return (
     <>
-      <Link href={`/books/${note._id}`}>
+      <Link href={`/diary/${note._id}`}>
         <div>
           <h3>{note.title}</h3>
           <p>{note.date}</p>

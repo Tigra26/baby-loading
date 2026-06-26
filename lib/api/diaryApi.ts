@@ -1,13 +1,14 @@
-import { DiaryProps } from "@/types/diary";
+import { DiaryFormValues, EmotionsProps, Note } from "@/types/diary";
 import { apiClient } from "./client";
-import { cookies } from "next/headers";
 
-export const getDiaryList = async (): Promise<DiaryProps> => {
-  const cookieStore = await cookies();
-  const response = await apiClient.get("/diary", {
-    headers: {
-      Cookie: cookieStore.toString(),
-    },
-  });
+export const getEmotions = async (): Promise<EmotionsProps> => {
+  const response = await apiClient.get<EmotionsProps>("/emotions");
+  return response.data;
+};
+
+export const createDiaryNote = async (
+  values: DiaryFormValues
+): Promise<Note> => {
+  const response = await apiClient.post<Note>("/diary", values);
   return response.data;
 };
