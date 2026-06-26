@@ -1,0 +1,80 @@
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background-color: var(--color-neutral-lightest);
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+.userInfo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.userName {
+  font-family: var(--second-family);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-scheme-text);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+.userEmail {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-scheme-text);
+  line-height: 1.5;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.uploadBtn {
+  width: 335px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+  background-color: var(--opacity-neutral-darkest-5);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-scheme-text);
+  text-align: center;
+  transition: background-color 250ms ease;
+}
+
+.uploadBtn:hover,
+.uploadBtn:focus-visible {
+  background-color: var(--color-scheme-foreground);
+}
+
+.uploadBtn:active {
+  background-color: var(--color-scheme-accent);
+  border-bottom: 4px solid transparent;
+}
+
+.uploadBtn:disabled {
+  background-color: var(--opacity-neutral-darkest-5);
+  opacity: 0.3;
+  cursor: not-allowed;
+}
