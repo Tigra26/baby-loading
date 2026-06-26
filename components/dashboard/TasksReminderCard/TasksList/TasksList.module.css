@@ -10,6 +10,12 @@
   font-size: 10px;
   line-height: 1.6;
   color: var(--color-neutral-darkest);
+
+  margin-left: 26px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .name {
@@ -18,6 +24,10 @@
   font-size: 12px;
   line-height: 1.6;
   color: var(--color-scheme-text);
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 }
 
 .task {
@@ -25,11 +35,50 @@
   gap: 8px;
 }
 
+.checkboxInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 20px;
+  height: 20px;
+
   border: 1px solid var(--opacity-transparent);
   border-radius: 4px;
-  width: 18px;
-  height: 18px;
 
-  background-color: black;
+  background: var(--opacity-neutral-darkest-5);
+
+  transition: all 0.2s ease;
+}
+
+.checkboxInput:checked + .checkbox {
+  background: var(--color-neutral-darkest);
+  border-color: var(--color-neutral-darkest);
+}
+
+.icon {
+  opacity: 0;
+
+  transition: opacity 250ms ease;
+}
+
+.checkboxInput:checked + .checkbox .icon {
+  opacity: 1;
+}
+
+.checkboxInput:checked + .checkbox + .name {
+  text-decoration: line-through;
 }

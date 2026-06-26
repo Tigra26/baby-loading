@@ -1,20 +1,26 @@
+"use client";
+
 import css from "./TaskReminderCard.module.css";
 import TasksUpperPart from "./TasksUpperPart/TasksUpperPart";
 import TasksBottomPart from "./TasksBottomPart/TasksBottomPart";
-import { serverGetTasks } from "@/lib/api/serverApi";
 import TasksList from "./TasksList/TasksList";
+import { useQuery } from "@tanstack/react-query";
+import { getTasks } from "@/lib/api/tasksApi";
 
-const TaskReminderCard = async () => {
-  const getTasks = await serverGetTasks();
+const TaskReminderCard = () => {
+  const { data } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: () => getTasks(),
+  });
 
   return (
     <div className={css.container}>
       <TasksUpperPart />
 
-      {getTasks.tasks.length === 0 ? (
+      {data && data.length === 0 ? (
         <TasksBottomPart />
       ) : (
-        <TasksList task={getTasks.tasks} />
+        <TasksList task={data} />
       )}
     </div>
   );
