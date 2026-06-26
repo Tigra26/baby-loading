@@ -1,4 +1,5 @@
 import { getDiaryList } from "@/lib/api/diaryApi.server";
+import css from "./DiaryEntryDetails.module.css";
 
 interface DiaryEntryDetailsProps {
   id: string;
@@ -9,29 +10,28 @@ const DiaryEntryDetails = async ({ id }: DiaryEntryDetailsProps) => {
 
   const note = diaryNotes.find((note) => note._id === id);
 
-  console.log("id:", id);
-  console.log("notes:", diaryNotes);
-
   if (!note) {
     return <p>Запис не знайдено</p>;
   }
   return (
-    <>
-      <div>
-        <h2>{note.title}</h2>
-        <p>button add</p>
+    <div className={css.card}>
+      <div className={css.titleBlock}>
+        <h2 className={css.title}>{note.title}</h2>
+        <p>++</p>
       </div>
-      <div>
-        <p>{note.date}</p>
-        <p>button delete</p>
+      <div className={css.dateBlock}>
+        <p className={css.date}>{note.date}</p>
+        <p>--</p>
       </div>
-      <p>{note.description}</p>
-      <div>
+      <p className={css.description}>{note.description}</p>
+      <div className={css.emotionsBlock}>
         {note.emotions.map((emotion) => (
-          <p key={emotion._id}>{emotion.title}</p>
+          <p className={css.emotion} key={emotion._id}>
+            {emotion.title}
+          </p>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -25,7 +25,7 @@ const DiaryList = ({ diary }: DiaryListProps) => {
 
   return (
     <>
-      <div className={css.diaryList}>
+      <div className={css.diary}>
         <div className={css.diaryHeader}>
           <h2 className={css.diaryTitle}>Ваші записи</h2>
           <div className={css.diaryCreate}>
@@ -40,7 +40,7 @@ const DiaryList = ({ diary }: DiaryListProps) => {
             Наразі записи у щоденнику відсутні
           </p>
         ) : (
-          <ul>
+          <ul className={css.diaryList}>
             {diary.diaryNotes.map((note) => (
               <li key={note._id}>
                 <DiaryEntryCard note={note} />
