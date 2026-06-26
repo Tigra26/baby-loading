@@ -11,6 +11,7 @@ import { ProfileAvatar } from "../ProfileAvatar/ProfileAvatar";
 
 import css from "./ProfileEditForm.module.css";
 import ArrowDownIcon from "@/assets/icons/keyboard_arrow_down.svg";
+import { CustomDatePicker } from "@/components/shared/Calendar/CustomDatePicker";
 
 const GENDER_OPTIONS = [
   { value: "boy", label: "Хлопчик" },
@@ -177,25 +178,33 @@ export const ProfileEditForm = () => {
             />
           </div>
 
-          <div className={css.fieldWrapper}>
+          {/* <div className={css.fieldWrapper}>
             <label htmlFor="dueDate" className={css.fieldLabel}>
               Планова дата пологів
             </label>
             <div className={css.selectWrapper}>
               <Field name="dueDate">
-                {({ field, meta }: FieldProps) => (
-                  <input
-                    {...field}
-                    id="dueDate"
-                    type={focused || !!field.value ? "date" : "text"}
-                    placeholder="16.07.2025"
-                    onFocus={() => setFocused(true)}
-                    onBlur={() => setFocused(false)}
-                    className={`${css.input} ${css.dateInput} ${!field.value ? css.placeholderColor : ""} ${
-                      meta.error && meta.touched ? css.inputError : ""
-                    }`}
-                  />
-                )}
+                {({ field, form, meta }: FieldProps) => {
+                  const selectedDate = field.value
+                    ? new Date(field.value)
+                    : null;
+
+                  return (
+                    <CustomDatePicker
+                      id="dueDate"
+                      selected={selectedDate}
+                      error={Boolean(meta.error && meta.touched)}
+                      placeholderText="16.07.2025"
+                      onChange={(date: Date | null) => {
+                        form.setFieldValue(
+                          "dueDate",
+                          date ? date.toISOString().split("T")[0] : ""
+                        );
+                        form.setFieldTouched("dueDate", true);
+                      }}
+                    />
+                  );
+                }}
               </Field>
               <ArrowDownIcon className={css.selectIcon} />
             </div>
@@ -204,8 +213,40 @@ export const ProfileEditForm = () => {
               className={css.errorMessage}
               component="span"
             />
-          </div>
+          </div> */}
 
+          <div className={css.fieldWrapper}>
+            <label htmlFor="dueDate" className={css.fieldLabel}>
+              Планова дата пологів
+            </label>
+            <Field name="dueDate">
+              {({ field, form, meta }: FieldProps) => {
+                const selectedDate = field.value ? new Date(field.value) : null;
+
+                return (
+                  <CustomDatePicker
+                    id="dueDate"
+                    selected={selectedDate}
+                    error={Boolean(meta.error && meta.touched)}
+                    placeholderText="16.07.2025"
+                    className={css.input}
+                    onChange={(date: Date | null) => {
+                      form.setFieldValue(
+                        "dueDate",
+                        date ? date.toISOString().split("T")[0] : ""
+                      );
+                      form.setFieldTouched("dueDate", true);
+                    }}
+                  />
+                );
+              }}
+            </Field>
+            <ErrorMessage
+              name="dueDate"
+              className={css.errorMessage}
+              component="span"
+            />
+          </div>
           <div className={css.btnGroup}>
             <button
               type="button"
