@@ -14,6 +14,7 @@ import LogoutIcon from "@/assets/icons/logout.svg";
 import MenuIcon from "@/assets/icons/menu.svg";
 import TodayIcon from "@/assets/icons/today.svg";
 import BreadcrumbsRight from "@/assets/icons/chevron_right.svg";
+import NewNoteDiary from "@/assets/icons/new_note.svg";
 
 const icons = {
   account: AccountCircleIcon,
@@ -32,6 +33,7 @@ const icons = {
   menu: MenuIcon,
   today: TodayIcon,
   separator: BreadcrumbsRight,
+  addNote: NewNoteDiary,
 };
 
 export type IconName = keyof typeof icons;
