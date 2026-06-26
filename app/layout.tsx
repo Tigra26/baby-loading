@@ -20,8 +20,43 @@ const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  title: "Лелека",
-  description: "Персональний помічник для майбутніх мам",
+  metadataBase: new URL("https://baby-loading-nine.vercel.app/"),
+
+  title: {
+    default: "Лелека",
+    template: "%s | Лелека",
+  },
+
+  description:
+    "Лелека — персональний помічник для майбутніх мам: щоденник, подорож вагітності, важливі завдання та профіль користувача.",
+
+  applicationName: "Лелека",
+
+  openGraph: {
+    title: "Лелека",
+    description:
+      "Персональний помічник для майбутніх мам: щоденник, подорож вагітності, важливі завдання та профіль користувача.",
+    url: "/",
+    siteName: "Лелека",
+    locale: "uk_UA",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Лелека — персональний помічник для майбутніх мам",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Лелека",
+    description:
+      "Персональний помічник для майбутніх мам: щоденник, подорож вагітності, важливі завдання та профіль користувача.",
+    images: ["/images/og-image.png"],
+  },
 };
 
 type RootLayoutProps = {

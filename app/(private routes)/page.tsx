@@ -1,9 +1,12 @@
-import TaskReminderCard from "@/components/dashboard/TasksReminderCard/TaskReminderCard";
+const HomePage = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
-export default function DashboardPage() {
   return (
-    <>
-      <TaskReminderCard />
-    </>
+    <div>
+      <h1>Мій день</h1>
+      <p>Головна сторінка застосунку “Лелека”.</p>
+    </div>
   );
-}
+};
+
+export default HomePage;

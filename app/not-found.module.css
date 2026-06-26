@@ -1,0 +1,126 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  padding: 24px 20px;
+
+  background-color: var(--color-scheme-background);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 335px;
+  padding: 40px 24px;
+
+  border-radius: 32px;
+  background-color: var(--color-scheme-foreground);
+  box-shadow: 0 12px 40px rgba(119, 97, 92, 0.12);
+
+  text-align: center;
+}
+
+.code {
+  margin: 40px 0 8px;
+
+  color: var(--color-scheme-accent);
+  font-family: var(--second-family);
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.title {
+  margin: 0;
+
+  color: var(--color-scheme-text);
+  font-family: var(--second-family);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text {
+  margin: 16px 0 0;
+
+  color: var(--color-neutral-dark);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 200px;
+  min-height: 44px;
+  margin-top: 32px;
+  padding: 12px 24px;
+
+  border-radius: 999px;
+  background-color: var(--color-scheme-accent);
+
+  color: var(--color-scheme-background);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease;
+}
+
+.link:hover,
+.link:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(234, 47, 105, 0.18);
+  opacity: 0.9;
+}
+
+.link:active {
+  transform: translateY(0);
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .card {
+    max-width: 480px;
+    padding: 56px 48px;
+  }
+
+  .code {
+    margin-top: 48px;
+    font-size: 96px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .link {
+    min-height: 48px;
+    font-size: 16px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1440px) {
+  .card {
+    max-width: 520px;
+  }
+}
