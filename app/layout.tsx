@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Лелека",
     description:
       "Персональний помічник для майбутніх мам: щоденник, подорож вагітності, важливі завдання та профіль користувача.",
-    url: "/",
+    url: "https://baby-loading-nine.vercel.app/",
     siteName: "Лелека",
     locale: "uk_UA",
     type: "website",
