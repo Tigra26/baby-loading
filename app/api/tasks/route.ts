@@ -4,13 +4,19 @@ import { cookies } from "next/headers";
 import { logErrorResponse } from "../_utils/utils";
 import { isAxiosError } from "axios";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const cookieStore = await cookies();
+    const { searchParams } = new URL(request.url);
 
     const res = await api.get("/tasks", {
       headers: {
         Cookie: cookieStore.toString(),
+      },
+      params: {
+        page: searchParams.get("page") ?? undefined,
+        limit: searchParams.get("limit") ?? undefined,
+        sortOrder: searchParams.get("sortOrder") ?? undefined,
       },
     });
 

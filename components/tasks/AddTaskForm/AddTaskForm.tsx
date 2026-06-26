@@ -1,13 +1,14 @@
 "use client";
 
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-toastify";
 
-import css from "./AddTaskForm.module.css";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createTask, TaskCreationProps } from "@/lib/api/tasksApi";
 import { useState } from "react";
 import taskFormSchema from "@/lib/validation/taskSchemas";
+
+import css from "./AddTaskForm.module.css";
 
 interface AddTaskFormProps {
   onClose: () => void;
@@ -19,15 +20,21 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
     date: "",
   });
 
+  const queryClient = useQueryClient();
+
   const mutation = useMutation({
     mutationKey: ["addTask"],
     mutationFn: createTask,
     onSuccess: () => {
       setDraft({ name: "", date: "" });
-      toast.success("Task created");
+      toast.success("Завдання успішно створено!");
+
+      queryClient.invalidateQueries({
+        queryKey: ["getTasks"],
+      });
     },
     onError: () => {
-      toast.error("Error creating task");
+      toast.error("Помилка створення завдання!");
     },
   });
 
@@ -58,11 +65,13 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
               as="input"
               placeholder="Прийняти вітаміни"
             />
+            <ErrorMessage name="name" component="span" className={css.error} />
           </label>
 
           <label className={css.label}>
             Дата
             <Field as="input" className={css.input} name="date" type="date" />
+            <ErrorMessage name="date" component="span" className={css.error} />
           </label>
 
           <button className={css.button} type="submit">
