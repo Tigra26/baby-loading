@@ -3,7 +3,12 @@
   flex-direction: column;
   gap: 24px;
   padding: 0px 20px;
-  width: 100%;
+
+  @media screen and (min-width: 1440px) {
+    width: 100%;
+    max-width: 644px;
+    padding: 0 32px;
+  }
 }
 
 .fieldWrapper {
@@ -19,6 +24,7 @@
 
 .input {
   width: 100%;
+  height: 37px;
   padding: 8px 12px;
   border-radius: 12px;
   border: 2px solid var(--opacity-transparent);
@@ -158,8 +164,13 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 8px;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 16px;
+  }
 }
 
 .cancelBtn,
@@ -170,6 +181,13 @@
   font-weight: 500;
   text-align: center;
   transition: border-color 250ms ease;
+
+  @media screen and (min-width: 768px) {
+    flex: none;
+    width: auto;
+    white-space: nowrap;
+    margin-top: 24px;
+  }
 }
 
 .saveBtn {
