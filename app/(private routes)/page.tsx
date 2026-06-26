@@ -1,8 +1,12 @@
-export default function DashboardPage() {
+const HomePage = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
   return (
-    <section>
+    <div>
       <h1>Мій день</h1>
       <p>Головна сторінка застосунку “Лелека”.</p>
-    </section>
+    </div>
   );
-}
+};
+
+export default HomePage;
