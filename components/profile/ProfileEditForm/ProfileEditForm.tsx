@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { useAuthStore } from "@/lib/store/authStore";
 import { updateProfile } from "@/lib/api/userApi";
 import { profileSchema } from "@/lib/validation/profileSchemas";
+import { ProfileAvatar } from "../ProfileAvatar/ProfileAvatar";
+
 import css from "./ProfileEditForm.module.css";
 import ArrowDownIcon from "@/assets/icons/keyboard_arrow_down.svg";
 import ArrowUpIcon from "@/assets/icons/keyboard_arrow_up.svg";
@@ -20,7 +22,7 @@ const GENDER_OPTIONS = [
 export const ProfileEditForm = () => {
   const { user, updateUserFields } = useAuthStore();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const [dateInputType, setDateInputType] = useState("text");
+  const [focused, setFocused] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,8 +45,16 @@ export const ProfileEditForm = () => {
       updateUserFields(updatedUser);
       toast.success("Профіль успішно оновлено!");
     },
-    onError: (error) => {
-      toast.error(error.message);
+    onError: (error: unknown) => {
+      const err = error as {
+        response?: { data?: { message?: string } };
+        message?: string;
+      };
+      toast.error(
+        err.response?.data?.message ||
+          err.message ||
+          "Помилка оновлення профілю"
+      );
     },
   });
 
@@ -55,15 +65,20 @@ export const ProfileEditForm = () => {
     dueDate: user?.dueDate || "",
   };
 
+  const handleFormSubmit = (values: typeof initialValues) => {
+    mutate(values);
+  };
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={profileSchema}
-      onSubmit={mutate}
+      onSubmit={handleFormSubmit}
       enableReinitialize={true}
     >
       {({ resetForm }) => (
         <Form className={css.form}>
+          <ProfileAvatar profilePhotoUrl={user?.avatarUrl} />
           <div className={css.fieldWrapper}>
             <label htmlFor="name" className={css.fieldLabel}>
               Ім`я
@@ -129,12 +144,10 @@ export const ProfileEditForm = () => {
                       <span>
                         {currentOption ? currentOption.label : "Оберіть стать"}
                       </span>
-                      {/* Рендеримо іконку вгору або вниз залежно від стану сторінки */}
-                      {isSelectOpen ? (
-                        <ArrowUpIcon className={css.arrowIcon} />
-                      ) : (
-                        <ArrowDownIcon className={css.arrowIcon} />
-                      )}
+
+                      <ArrowDownIcon
+                        className={`${css.arrowIcon} ${isSelectOpen ? css.active : ""}`}
+                      />
                     </div>
 
                     {isSelectOpen && (
@@ -175,17 +188,16 @@ export const ProfileEditForm = () => {
                   <input
                     {...field}
                     id="dueDate"
-                    type={dateInputType}
+                    type={focused || !!field.value ? "date" : "text"}
                     placeholder="16.07.2025"
-                    onFocus={() => setDateInputType("date")}
-                    onBlur={() => !field.value && setDateInputType("text")}
+                    onFocus={() => setFocused(true)}
+                    onBlur={() => setFocused(false)}
                     className={`${css.input} ${css.dateInput} ${!field.value ? css.placeholderColor : ""} ${
                       meta.error && meta.touched ? css.inputError : ""
                     }`}
                   />
                 )}
               </Field>
-
               <ArrowDownIcon className={css.selectIcon} />
             </div>
             <ErrorMessage

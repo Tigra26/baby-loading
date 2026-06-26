@@ -7,11 +7,22 @@ import { NextResponse } from "next/server";
 export async function PATCH(request: Request) {
   try {
     const cookieStore = await cookies();
-    const body = await request.json();
 
-    const res = await api.patch("/users/current/avatars", body, {
+    const incomingFormData = await request.formData();
+    const file = incomingFormData.get("file");
+
+    if (!file) {
+      return NextResponse.json({ error: "File is required" }, { status: 400 });
+    }
+
+    const backendFormData = new FormData();
+
+    backendFormData.append("avatar", file);
+
+    const res = await api.patch("/users/current/avatars", backendFormData, {
       headers: {
         Cookie: cookieStore.toString(),
+        "Content-Type": "multipart/form-data",
       },
     });
 
@@ -21,7 +32,7 @@ export async function PATCH(request: Request) {
       logErrorResponse(error.response?.data);
       return NextResponse.json(
         { error: error.message, response: error.response?.data },
-        { status: error.status }
+        { status: error.response?.status || 500 }
       );
     }
     logErrorResponse({ message: (error as Error).message });

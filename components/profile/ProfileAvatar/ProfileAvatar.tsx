@@ -1,55 +1,89 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "react-toastify";
 import { useAuthStore } from "@/lib/store/authStore";
-import { updateAvatar } from "@/lib/api/userApi";
+import { uploadImage } from "@/lib/api/userApi";
+import { toast } from "react-toastify";
 import styles from "./ProfileAvatar.module.css";
 
-export const ProfileAvatar = () => {
+type Props = {
+  profilePhotoUrl?: string;
+};
+
+export const ProfileAvatar = ({ profilePhotoUrl }: Props) => {
   const { user, updateUserFields } = useAuthStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const mutation = useMutation({
-    mutationFn: updateAvatar,
-    onSuccess: (updatedUser) => {
-      updateUserFields({ avatarUrl: updatedUser.avatarUrl });
-      toast.success("Аватар успішно оновлено!");
-    },
-    onError: (error) => {
-      toast.error(error.message);
-    },
-  });
+  const [localPreview, setLocalPreview] = useState<string>("");
+  const [isUploading, setIsUploading] = useState(false);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 1024 * 1024) {
+    if (!file.type.startsWith("image/")) {
+      toast.error("Можно завантажувати лише зображення");
+      return;
+    }
+
+    if (file.size > 1 * 1024 * 1024) {
       toast.error("Файл занадто великий. Максимальний розмір — 1 МБ");
       return;
     }
 
-    mutation.mutate(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setLocalPreview(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+
+    try {
+      setIsUploading(true);
+
+      const updatedUser = await uploadImage(file);
+
+      updateUserFields(updatedUser);
+      toast.success("Фото профілю успішно оновлено!");
+
+      setLocalPreview("");
+    } catch (error) {
+      const err = error as {
+        response?: { data?: { message?: string } };
+        message?: string;
+      };
+      toast.error(
+        err.response?.data?.message || err.message || "Не вдалося зберегти фото"
+      );
+      setLocalPreview("");
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
 
+  const displayImage = localPreview || profilePhotoUrl;
+
   return (
     <div className={styles.avatarSection}>
       <div className={styles.avatarWrapper}>
-        <Image
-          src={user?.avatarUrl || "/images/common/women-default-avatar.jpg"}
-          alt={user?.name || "User Avatar"}
-          fill
-          className={styles.avatar}
-          priority
-          unoptimized
-        />
+        {displayImage ? (
+          <Image
+            src={displayImage}
+            alt={user?.name || "User Avatar"}
+            fill
+            className={styles.avatar}
+            priority
+            unoptimized
+          />
+        ) : (
+          <div className={styles.avatarPlaceholder}>
+            {user?.name?.charAt(0).toUpperCase() || "U"}
+          </div>
+        )}
       </div>
 
       <div className={styles.userInfo}>
@@ -63,15 +97,16 @@ export const ProfileAvatar = () => {
         onChange={handleFileChange}
         accept="image/*"
         className={styles.hiddenInput}
+        disabled={isUploading}
       />
 
       <button
         type="button"
         className={styles.uploadBtn}
         onClick={handleButtonClick}
-        disabled={mutation.isPending}
+        disabled={isUploading}
       >
-        {mutation.isPending ? "Завантаження..." : "Завантажити нове фото"}
+        {isUploading ? "Збереження..." : "Завантажити нове фото"}
       </button>
     </div>
   );

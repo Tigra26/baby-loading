@@ -3,6 +3,7 @@ import { Lato, Comfortaa } from "next/font/google";
 import AuthProvider from "@/providers/AuthProvider";
 import TanStackProvider from "@/providers/TanStackProvider";
 import "./globals.css";
+import { ToastProvider } from "@/providers/ToastProvider";
 
 const lato = Lato({
   subsets: ["latin", "latin-ext"],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${lato.variable} ${comfortaa.variable}`}>
         <TanStackProvider>
           <AuthProvider>{children}</AuthProvider>
+          <ToastProvider />
         </TanStackProvider>
       </body>
     </html>

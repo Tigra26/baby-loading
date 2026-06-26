@@ -1,0 +1,8 @@
+.profilePageMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
