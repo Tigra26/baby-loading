@@ -1,7 +1,6 @@
 import GreetingBlock from "@/components/dashboard/GreetingBlock/GreetingBlock";
 import DiaryList from "@/components/diary/DiaryList/DiaryList";
-import { getDiaryList } from "@/lib/api/diaryApi";
-import css from "./Diary.module.css";
+import { getDiaryList } from "@/lib/api/diaryApi.server";
 
 const Diary = async () => {
   const diary = await getDiaryList();

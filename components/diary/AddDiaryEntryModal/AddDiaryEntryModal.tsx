@@ -1,53 +1,22 @@
-"use client";
-
-import css from "./AddDiaryEntryModal.module.css";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import Modal from "@/components/shared/Modal/Modal";
 import AddDiaryEntryForm from "../AddDiaryEntryForm/AddDiaryEntryForm";
+import css from "./AddDiaryEntryModal.module.css";
 
-const AddDiaryEntryModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface AddDiaryEntryModalProps {
+  onClose: () => void;
+}
 
-  function openModal() {
-    setIsModalOpen(true);
-  }
-
-  function closeModal() {
-    setIsModalOpen(false);
-
-    const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-      if (event.target === event.currentTarget) {
-        closeModal();
-      }
-    };
-
-    useEffect(() => {
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") {
-          closeModal();
-        }
-      };
-
-      document.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-
-      return () => {
-        document.removeEventListener("keydown", handleKeyDown);
-        document.body.style.overflow = "";
-      };
-    }, [closeModal]);
-
-    return createPortal(
-      <div
-        className={css.backdrop}
-        role="dialog"
-        aria-modal="true"
-        onClick={handleBackdropClick}
-      >
-        <div className={css.modal}>{isModalOpen && <AddDiaryEntryForm />}</div>
-      </div>,
-      document.body
-    );
-  }
+const AddDiaryEntryModal = ({ onClose }: AddDiaryEntryModalProps) => {
+  return (
+    <div className={css.modal}>
+      <Modal onClose={onClose}>
+        <h2 className={css.modalTitle}>Новий запис</h2>
+        <button type="button" className={css.cancelButton} onClick={onClose}>
+          X
+        </button>
+        <AddDiaryEntryForm onClose={onClose} />
+      </Modal>
+    </div>
+  );
 };
 export default AddDiaryEntryModal;

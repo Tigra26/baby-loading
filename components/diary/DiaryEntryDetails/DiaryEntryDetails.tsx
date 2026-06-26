@@ -1,18 +1,16 @@
-"use client";
-
-import { getDiaryList } from "@/lib/api/diaryApi";
+import { getDiaryList } from "@/lib/api/diaryApi.server";
 
 interface DiaryEntryDetailsProps {
-  params: Promise<{
-    id: string;
-  }>;
+  id: string;
 }
 
-const DiaryEntryDetails = async ({ params }: DiaryEntryDetailsProps) => {
-  const { id } = await params;
+const DiaryEntryDetails = async ({ id }: DiaryEntryDetailsProps) => {
   const { diaryNotes } = await getDiaryList();
 
   const note = diaryNotes.find((note) => note._id === id);
+
+  console.log("id:", id);
+  console.log("notes:", diaryNotes);
 
   if (!note) {
     return <p>Запис не знайдено</p>;

@@ -3,13 +3,26 @@
 import css from "./DiaryList.module.css";
 import { DiaryProps } from "@/types/diary";
 import DiaryEntryCard from "../DiaryEntryCard/DiaryEntryCard";
+import AddDiaryEntryModal from "../AddDiaryEntryModal/AddDiaryEntryModal";
+import { useState } from "react";
 
 interface DiaryListProps {
   diary: DiaryProps;
 }
 
 const DiaryList = ({ diary }: DiaryListProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function openModal() {
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+
   console.log(diary);
+
   return (
     <>
       <div className={css.diaryList}>
@@ -17,7 +30,7 @@ const DiaryList = ({ diary }: DiaryListProps) => {
           <h2 className={css.diaryTitle}>Ваші записи</h2>
           <div className={css.diaryCreate}>
             <p className={css.diaryCreateText}>Новий запис</p>
-            <button className={css.diaryCreateBtn} type="submit">
+            <button className={css.diaryCreateBtn} onClick={openModal}>
               +
             </button>
           </div>
@@ -35,6 +48,7 @@ const DiaryList = ({ diary }: DiaryListProps) => {
             ))}
           </ul>
         )}
+        {isModalOpen && <AddDiaryEntryModal onClose={closeModal} />}
       </div>
     </>
   );
