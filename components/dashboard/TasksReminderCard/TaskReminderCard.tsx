@@ -1,10 +1,12 @@
 "use client";
 
-import { SvgIcon } from "@/components/shared/SvgIcon/SvgIcon";
-import css from "./TaskReminderCard.module.css";
-import Modal from "@/components/shared/Modal/Modal";
-import AddTaskForm from "@/components/tasks/AddTaskForm/AddTaskForm";
 import { useState } from "react";
+
+import Modal from "@/components/shared/Modal/Modal";
+import { SvgIcon } from "@/components/shared/SvgIcon/SvgIcon";
+import AddTaskForm from "@/components/tasks/AddTaskForm/AddTaskForm";
+
+import css from "./TaskReminderCard.module.css";
 
 const TaskReminderCard = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,12 +33,6 @@ const TaskReminderCard = () => {
         <p className={css.textFirst}>Наразі немає жодних завдань</p>
         <p className={css.textSecond}>Створіть мершій нове завдання</p>
       </div>
-
-      {/* <ul>
-        <li>
-          <input type="checkbox" />
-        </li>
-      </ul> */}
 
       <button onClick={handleAddTask} className={css.button}>
         Створити завдання

@@ -1,5 +1,11 @@
+import css from "./AddTaskForm.module.css";
+
 const AddTaskForm = () => {
-  return <div>AddTaskForm</div>;
+  return (
+    <>
+      <h2 className={css.title}>Нове Завдання</h2>
+    </>
+  );
 };
 
 export default AddTaskForm;
