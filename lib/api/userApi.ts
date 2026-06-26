@@ -7,23 +7,26 @@ export const getUser = async (): Promise<User> => {
   return data;
 };
 
-export const updateProfile = async (
-  data: Partial<Omit<User, "_id" | "avatarUrl">>
-): Promise<User> => {
-  const response = await apiClient.patch<User>("/users/current", data);
-  return response.data;
-};
-
-export const updateAvatar = async (file: File): Promise<User> => {
+export const uploadImage = async (file: File): Promise<User> => {
   const formData = new FormData();
-  formData.append("avatar", file);
+  formData.append("file", file);
 
   const response = await apiClient.patch<User>(
     "/users/current/avatars",
     formData,
     {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     }
   );
+
+  return response.data;
+};
+
+export const updateProfile = async (
+  data: Partial<Omit<User, "_id">>
+): Promise<User> => {
+  const response = await apiClient.patch<User>("/users/current", data);
   return response.data;
 };
