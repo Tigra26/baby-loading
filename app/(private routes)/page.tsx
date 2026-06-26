@@ -1,6 +1,4 @@
-const HomePage = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-
+const HomePage = () => {
   return (
     <div>
       <h1>Мій день</h1>
