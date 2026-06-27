@@ -7,14 +7,18 @@ import TasksList from "./TasksList/TasksList";
 import { useQuery } from "@tanstack/react-query";
 import { getTasks } from "@/lib/api/tasksApi";
 
-const TaskReminderCard = () => {
+type Props = { className?: string };
+
+const TaskReminderCard = ({ className }: Props) => {
   const { data } = useQuery({
     queryKey: ["getTasks"],
     queryFn: () => getTasks(),
   });
 
   return (
-    <div className={css.container}>
+    <div
+      className={className ? `${css.container} ${className}` : css.container}
+    >
       <TasksUpperPart />
 
       {data && data.length === 0 ? (

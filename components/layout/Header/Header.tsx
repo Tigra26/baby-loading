@@ -1,5 +1,3 @@
-export default function Header () {
-    return (
-        <>Header</>
-    )
+export default function Header() {
+  return <>Header</>;
 }
