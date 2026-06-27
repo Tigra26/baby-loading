@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header/Header";
 import Sidebar from "@/components/layout/Sidebar/Sidebar";
 import Breadcrumbs from "@/components/layout/Breadcrumbs/Breadcrumbs";
+
 import css from "./layout.module.css";
 
 type PrivateLayoutProps = {

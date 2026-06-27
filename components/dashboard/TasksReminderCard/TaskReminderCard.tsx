@@ -11,7 +11,7 @@ type Props = { className?: string };
 
 const TaskReminderCard = ({ className }: Props) => {
   const { data } = useQuery({
-    queryKey: ["tasks"],
+    queryKey: ["getTasks"],
     queryFn: () => getTasks(),
   });
 

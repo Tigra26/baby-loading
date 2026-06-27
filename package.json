@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@svgr/webpack": "^8.1.0",
+    "@tailwindcss/postcss": "^4.3.1",
     "@tanstack/react-query": "^5.101.1",
     "@tanstack/react-query-devtools": "^5.101.1",
     "axios": "^1.18.1",
@@ -18,15 +18,18 @@
     "formik": "^2.4.9",
     "modern-normalize": "^3.0.1",
     "next": "16.2.9",
+    "postcss": "^8.5.15",
     "react": "19.2.4",
     "react-datepicker": "^9.1.0",
     "react-dom": "19.2.4",
     "react-spinners": "^0.17.0",
     "react-toastify": "^11.1.0",
+    "tailwindcss": "^4.3.1",
     "yup": "^1.7.1",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-datepicker": "^6.2.0",
