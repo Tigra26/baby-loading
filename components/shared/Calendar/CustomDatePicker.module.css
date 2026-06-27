@@ -1,0 +1,164 @@
+.datePickerContainer {
+  position: relative;
+  width: 100%;
+}
+
+:global(.react-datepicker-wrapper) {
+  width: 100%;
+}
+
+:global(.react-datepicker) {
+  font-family: inherit;
+  background-color: var(--color-neutral-lightest);
+  border: none;
+  border-radius: 20px;
+  box-shadow:
+    0px 10px 40px rgba(0, 0, 0, 0.06),
+    0px 2px 10px rgba(0, 0, 0, 0.02);
+  padding: 12px;
+  overflow: hidden;
+
+  & *,
+  & *:focus {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  & :global(.react-datepicker__triangle) {
+    display: none !important;
+  }
+
+  & :global(.react-datepicker__day-name) {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--opacity-neutral-darkest-60);
+    width: 36px;
+    line-height: 36px;
+    margin: 2px;
+  }
+
+  & :global(.react-datepicker__day) {
+    font-size: 14px;
+    color: var(--color-neutral-darkest);
+    width: 36px;
+    line-height: 36px;
+    margin: 2px;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  & :global(.react-datepicker__day:hover) {
+    background-color: var(--opacity-neutral-darkest-5);
+    color: var(--color-scheme-accent);
+  }
+
+  & :global(.react-datepicker__day--outside-month) {
+    color: var(--opacity-neutral-darkest-15) !important;
+  }
+
+  & :global(.react-datepicker__day--selected),
+  & :global(.react-datepicker__day--keyboard-selected),
+  & :global(.react-datepicker__day--focused) {
+    background-color: var(--color-scheme-accent) !important;
+    color: var(--color-neutral-darkest) !important;
+    font-weight: 600;
+    border-radius: 12px;
+    border: 2px solid var(--color-scheme-accent) !important;
+    box-shadow: 0px 4px 12px rgba(255, 182, 193, 0.2);
+    outline: none !important;
+  }
+
+  & :global(.react-datepicker__day):-webkit-focus-ring-color {
+    outline: none !important;
+    background-color: var(--color-scheme-accent) !important;
+  }
+}
+
+.customHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px 12px 4px;
+}
+
+.headerTitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-neutral-darkest);
+  text-transform: capitalize;
+}
+
+.headerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 200ms ease;
+}
+
+.headerBtn:hover:not(:disabled) {
+  background-color: var(--opacity-neutral-darkest-5);
+}
+
+.headerBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.arrowLeft,
+.arrowRight {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-style: solid;
+  border-color: var(--opacity-neutral-darkest-60);
+  transform: rotate(45deg);
+  transition: border-color 200ms ease;
+}
+
+.arrowLeft {
+  border-width: 0 0 2px 2px;
+  margin-left: 2px;
+}
+
+.arrowRight {
+  border-width: 2px 2px 0 0;
+  margin-right: 2px;
+}
+
+.headerBtn:hover .arrowLeft,
+.headerBtn:hover .arrowRight {
+  border-color: var(--color-scheme-accent);
+}
+
+.iconWrapper {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 250ms ease;
+}
+
+.selectIcon {
+  fill: var(--opacity-neutral-darkest-60);
+  stroke: var(--opacity-neutral-darkest-60);
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+}
+
+.iconWrapper.active {
+  transform: translateY(-50%) rotate(180deg);
+}

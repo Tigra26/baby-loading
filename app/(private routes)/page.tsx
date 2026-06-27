@@ -1,9 +1,12 @@
+import TaskReminderCard from "@/components/dashboard/TasksReminderCard/TaskReminderCard";
 import DashboardClient from "./DashboardClient";
-
-export default function DashboardPage() {
+const HomePage = () => {
   return (
-    <section>
+    <>
       <DashboardClient />
-    </section>
+      <TaskReminderCard />
+    </>
   );
-}
+};
+
+export default HomePage;
