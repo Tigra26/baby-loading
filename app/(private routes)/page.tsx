@@ -1,9 +1,20 @@
 import DashboardClient from "./DashboardClient";
+import FeelingCheckCard from "@/components/dashboard/FeelingCheckCard/FeelingCheckCard";
 
-export default function DashboardPage() {
+const HomePage = () => {
   return (
-    <section>
-      <DashboardClient />
-    </section>
+    <>
+      <div className="flex flex-col gap-4 pl-5 pr-5">
+        <DashboardClient />
+
+        <div className="flex flex-col gap-8">
+          <TaskReminderCard />
+
+          <FeelingCheckCard />
+        </div>
+      </div>
+    </>
   );
-}
+};
+
+export default HomePage;

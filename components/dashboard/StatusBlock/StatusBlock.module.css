@@ -1,10 +1,9 @@
 .list {
-  margin-top: 16px;
-  margin-bottom: 16px;
   display: flex;
   justify-content: center;
   gap: 16px;
 }
+
 .item {
   background-color: var(--color-pastel-pink-lighter);
   padding: 16px;
@@ -12,6 +11,7 @@
 
   width: 159px;
 }
+
 .header {
   font-family: var(--font-family);
 
@@ -21,6 +21,7 @@
 
   margin-bottom: 4px;
 }
+
 .descr {
   font-family: var(--second-family);
 
@@ -29,24 +30,27 @@
   line-height: 1.2;
   letter-spacing: 0.01em;
 }
+
 @media screen and (min-width: 768px) {
   .list {
     gap: 32px;
     justify-content: start;
-    margin-left: 32px;
-    margin-bottom: 32px;
   }
+
   .item {
     width: 336px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .item {
     width: 305px;
   }
+
   .header {
     font-size: 16px;
   }
+
   .descr {
     font-size: 56px;
   }
