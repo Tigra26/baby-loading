@@ -1,8 +1,16 @@
-export default function DiaryPage() {
+import GreetingBlock from "@/components/dashboard/GreetingBlock/GreetingBlock";
+import DiaryList from "@/components/diary/DiaryList/DiaryList";
+import { getDiaryList } from "@/lib/api/diaryApi.server";
+
+const Diary = async () => {
+  const diary = await getDiaryList();
+
   return (
-    <main>
-      <h1>Diary page</h1>
-      <p>This page is under development.</p>
-    </main>
+    <>
+      <GreetingBlock />
+      <DiaryList diary={diary} />
+    </>
   );
-}
+};
+
+export default Diary;
