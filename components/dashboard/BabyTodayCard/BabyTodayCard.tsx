@@ -24,21 +24,18 @@ const BabyTodayCard = ({ babyToday }: BabyTodayCardProps) => {
         <ul className={css.list}>
           <li className={css.item}>
             <p className={css.listDescr}>
-              {" "}
               <span className={css.listSpan}>Розмір: </span>
               Приблизно {babySize}см
             </p>
           </li>
           <li className={css.item}>
             <p className={css.listDescr}>
-              {" "}
               <span className={css.listSpan}>Вага: </span>
               Близько {babyWeight} грамів
             </p>
           </li>
           <li className={css.item}>
             <p className={css.listDescr}>
-              {" "}
               <span className={css.listSpan}>Активність: </span>
               {babyActivity}
             </p>

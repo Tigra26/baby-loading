@@ -6,30 +6,28 @@
   gap: 16px;
 }
 .item {
-  background-color: #fff4f6;
+  background-color: var(--color-pastel-pink-lighter);
   padding: 16px;
   border-radius: 32px;
 
   width: 159px;
 }
 .header {
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-family);
 
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
-  color: #000;
 
   margin-bottom: 4px;
 }
 .descr {
-  font-family: "Comfortaa", sans-serif;
+  font-family: var(--second-family);
 
   font-weight: 700;
   font-size: 40px;
   line-height: 1.2;
   letter-spacing: 0.01em;
-  color: #000;
 }
 @media screen and (min-width: 768px) {
   .list {
