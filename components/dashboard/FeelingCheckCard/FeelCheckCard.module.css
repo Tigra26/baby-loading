@@ -30,6 +30,9 @@
   font-size: 14px;
   line-height: 1.6;
   color: var(--color-scheme-text);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .textSecond {
