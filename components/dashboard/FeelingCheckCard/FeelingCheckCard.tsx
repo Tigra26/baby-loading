@@ -1,7 +1,7 @@
 "use client";
 
 import AddDiaryEntryModal from "@/components/diary/AddDiaryEntryModal/AddDiaryEntryModal";
-import css from "./FeelingCheckCard.module.css";
+import css from "./FeelCheckCard.module.css";
 
 import Modal from "@/components/shared/Modal/Modal";
 import { useState } from "react";
