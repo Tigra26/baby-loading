@@ -34,9 +34,9 @@
     display: flex;
   }
 
-  .main {
+  /* .main {
     margin-left: 312px;
-  }
+  } */
 
   .mainInner {
     max-width: 1128px;
