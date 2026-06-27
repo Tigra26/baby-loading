@@ -1,10 +1,9 @@
 "use client";
 
 import AddDiaryEntryModal from "@/components/diary/AddDiaryEntryModal/AddDiaryEntryModal";
-import css from "./FeelCheckCard.module.css";
-
-import Modal from "@/components/shared/Modal/Modal";
 import { useState } from "react";
+
+import css from "./FeelCheckCard.module.css";
 
 const FeelingCheckCard = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,11 +31,7 @@ const FeelingCheckCard = () => {
         Зробити запис у щоденник
       </button>
 
-      {isOpen && (
-        <Modal onClose={handleModalClose}>
-          <AddDiaryEntryModal />
-        </Modal>
-      )}
+      {isOpen && <AddDiaryEntryModal onClose={handleModalClose} />}
     </div>
   );
 };
