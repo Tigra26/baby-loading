@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 import { getWeekBaby, getWeekMom } from "@/lib/api/journeyApi";
 import { WeekBaby, WeekMom, isWeekBaby } from "@/types/journey";
 import Loader from "@/components/shared/Loader/Loader";
@@ -23,12 +24,22 @@ const JourneyDetails = ({ weekNumber }: Props) => {
       tab === "baby" ? getWeekBaby(weekNumber) : getWeekMom(weekNumber),
   });
 
+  useEffect(() => {
+    if (isError) {
+      toast.error("Не вдалося завантажити дані тижня");
+    }
+  }, [isError]);
+
   return (
     <div className={css.container}>
       <JourneyTabs activeTab={tab} onChange={setTab} />
       {isPending ? (
         <Loader variant="private" />
-      ) : isError || !data ? null : isWeekBaby(data) ? (
+      ) : isError ? (
+        <p className={css.error}>
+          Не вдалося завантажити дані. Спробуйте пізніше.
+        </p>
+      ) : !data ? null : isWeekBaby(data) ? (
         <BabyTab data={data} />
       ) : (
         <MomTab data={data} />
