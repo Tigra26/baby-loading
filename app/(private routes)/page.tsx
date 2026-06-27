@@ -1,8 +1,12 @@
-export default function DashboardPage() {
+import TaskReminderCard from "@/components/dashboard/TasksReminderCard/TaskReminderCard";
+import DashboardClient from "./DashboardClient";
+const HomePage = () => {
   return (
-    <section>
-      <h1>Мій день</h1>
-      <p>Головна сторінка застосунку “Лелека”.</p>
-    </section>
+    <>
+      <DashboardClient />
+      <TaskReminderCard />
+    </>
   );
-}
+};
+
+export default HomePage;

@@ -18,7 +18,9 @@
     "modern-normalize": "^3.0.1",
     "next": "16.2.9",
     "react": "19.2.4",
+    "react-datepicker": "^9.1.0",
     "react-dom": "19.2.4",
+    "react-spinners": "^0.17.0",
     "react-toastify": "^11.1.0",
     "yup": "^1.7.1",
     "zustand": "^5.0.14"
@@ -27,6 +29,7 @@
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
+    "@types/react-datepicker": "^6.2.0",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
