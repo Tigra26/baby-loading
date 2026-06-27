@@ -1,15 +1,17 @@
-"use client";
-
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import GreetingBlock from "@/components/dashboard/GreetingBlock/GreetingBlock";
 import WeekSelector from "@/components/journey/WeekSelector/WeekSelector";
 import JourneyDetails from "@/components/journey/JourneyDetails/JourneyDetails";
 import { TOTAL_PREGNANCY_WEEKS } from "@/lib/utils/pregnancy";
 import css from "./JourneyPage.module.css";
 
-const JourneyWeekPage = () => {
-  const params = useParams();
-  const weekNumber = Number(params.weekNumber);
+type Props = {
+  params: Promise<{ weekNumber: string }>;
+};
+
+const JourneyWeekPage = async ({ params }: Props) => {
+  const { weekNumber: rawWeek } = await params;
+  const weekNumber = Number(rawWeek);
 
   const isValidWeek =
     Number.isInteger(weekNumber) &&
