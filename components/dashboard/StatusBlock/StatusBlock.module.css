@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   gap: 16px;
+
+  margin-bottom: 16px;
 }
 
 .item {
@@ -35,6 +37,7 @@
   .list {
     gap: 32px;
     justify-content: start;
+    margin-bottom: 32px;
   }
 
   .item {

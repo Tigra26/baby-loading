@@ -23,7 +23,7 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationKey: ["addTask"],
+    mutationKey: ["createTask"],
     mutationFn: createTask,
     onSuccess: () => {
       setDraft({ name: "", date: "" });
