@@ -7,7 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "lehlehka.b.goit.study",
       },
-      { protocol: "https", hostname: "ftp.goit.study" },
+      {
+        protocol: "https",
+        hostname: "ftp.goit.study",
+      },
     ],
   },
 
