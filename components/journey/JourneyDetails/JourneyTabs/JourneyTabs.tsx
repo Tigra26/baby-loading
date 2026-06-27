@@ -7,7 +7,7 @@ type Props = {
   onChange: (tab: "baby" | "mom") => void;
 };
 
-export default function JourneyTabs({ activeTab, onChange }: Props) {
+const JourneyTabs = ({ activeTab, onChange }: Props) => {
   return (
     <div className={css.container}>
       <button
@@ -28,4 +28,6 @@ export default function JourneyTabs({ activeTab, onChange }: Props) {
       </button>
     </div>
   );
-}
+};
+
+export default JourneyTabs;
