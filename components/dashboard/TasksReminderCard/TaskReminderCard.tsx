@@ -9,7 +9,7 @@ import { getTasks } from "@/lib/api/tasksApi";
 
 const TaskReminderCard = () => {
   const { data } = useQuery({
-    queryKey: ["tasks"],
+    queryKey: ["getTasks"],
     queryFn: () => getTasks(),
   });
 
