@@ -5,7 +5,7 @@ import css from "./BabyTab.module.css";
 
 type Props = { data: WeekBaby };
 
-export default function BabyTab({ data }: Props) {
+const BabyTab = ({ data }: Props) => {
   return (
     <div className={css.card}>
       <div className={css.group}>
@@ -36,4 +36,6 @@ export default function BabyTab({ data }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export default BabyTab;

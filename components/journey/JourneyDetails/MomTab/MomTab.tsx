@@ -6,7 +6,7 @@ import css from "./MomTab.module.css";
 
 type Props = { data: WeekMom };
 
-export default function MomTab({ data }: Props) {
+const MomTab = ({ data }: Props) => {
   return (
     <div className={css.container}>
       <div className={css.card}>
@@ -41,4 +41,6 @@ export default function MomTab({ data }: Props) {
       <TaskReminderCard className={css.taskCard} />
     </div>
   );
-}
+};
+
+export default MomTab;
