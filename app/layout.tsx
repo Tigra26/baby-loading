@@ -4,6 +4,7 @@ import AuthProvider from "@/providers/AuthProvider";
 import TanStackProvider from "@/providers/TanStackProvider";
 import "./globals.css";
 import { ToastProvider } from "@/providers/ToastProvider";
+import BodyTheme from "@/components/theme/BodyTheme/BodyTheme";
 
 const lato = Lato({
   subsets: ["latin", "latin-ext"],
@@ -59,19 +60,25 @@ export const metadata: Metadata = {
   },
 };
 
-type RootLayoutProps = {
+interface RootLayoutProps {
   children: React.ReactNode;
-};
+}
 
-export default function RootLayout({ children }: RootLayoutProps) {
+const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="uk">
       <body className={`${lato.variable} ${comfortaa.variable}`}>
         <TanStackProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <BodyTheme />
+
+            {children}
+          </AuthProvider>
           <ToastProvider />
         </TanStackProvider>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

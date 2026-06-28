@@ -2,6 +2,42 @@ import TaskReminderCard from "@/components/dashboard/TasksReminderCard/TaskRemin
 import DashboardClient from "./DashboardClient";
 import FeelingCheckCard from "@/components/dashboard/FeelingCheckCard/FeelingCheckCard";
 import GreetingBlock from "@/components/dashboard/GreetingBlock/GreetingBlock";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Головна сторінка",
+  description: "Лелека - головна сторінка",
+
+  openGraph: {
+    title: "Лелека - головна сторінка",
+    description: "Лелека - головна сторінка",
+    url: "https://baby-loading-nine.vercel.app/",
+    siteName: "Лелека",
+    locale: "uk_UA",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Лелека — персональний помічник для майбутніх мам",
+      },
+    ],
+  },
+
+  twitter: {
+    title: "Лелека - головна сторінка",
+    description: "Лелека - головна сторінка",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Лелека — персональний помічник для майбутніх мам",
+      },
+    ],
+  },
+};
 
 const HomePage = () => {
   return (
