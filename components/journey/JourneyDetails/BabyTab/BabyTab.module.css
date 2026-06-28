@@ -76,3 +76,34 @@
   color: var(--color-scheme-text);
   margin: 0;
 }
+
+@media screen and (min-width: 1440px) {
+  .card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .group:first-child {
+    flex: 0 0 45%;
+  }
+
+  .group:last-child {
+    flex: 1;
+  }
+
+  .analogy,
+  .descriptions p,
+  .factText {
+    font-size: 16px;
+  }
+
+  .factTitle {
+    font-size: 18px;
+  }
+
+  .factBox {
+    padding: 16px;
+  }
+}
