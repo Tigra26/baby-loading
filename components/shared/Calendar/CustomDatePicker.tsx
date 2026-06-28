@@ -17,6 +17,7 @@ type CustomDatePickerProps = {
   id?: string;
   className?: string;
   error?: boolean;
+  showIcon?: boolean;
 };
 
 export const CustomDatePicker = ({
@@ -26,6 +27,7 @@ export const CustomDatePicker = ({
   id,
   className = "",
   error = false,
+  showIcon = true,
 }: CustomDatePickerProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -92,12 +94,15 @@ export const CustomDatePicker = ({
           );
         }}
       />
-      <div
-        className={`${css.iconWrapper} ${isOpen ? css.active : ""} ${ignoreClass}`}
-        onClick={handleToggleCalendar}
-      >
-        <ArrowDownIcon className={css.selectIcon} />
-      </div>
+
+      {showIcon && (
+        <div
+          className={`${css.iconWrapper} ${isOpen ? css.active : ""} ${ignoreClass}`}
+          onClick={handleToggleCalendar}
+        >
+          <ArrowDownIcon className={css.selectIcon} />
+        </div>
+      )}
     </div>
   );
 };

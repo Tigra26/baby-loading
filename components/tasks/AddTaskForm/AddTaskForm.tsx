@@ -1,7 +1,8 @@
 "use client";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
 import { toast } from "react-toastify";
+import { format } from "date-fns";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createTask, TaskCreationProps } from "@/lib/api/tasksApi";
@@ -9,6 +10,7 @@ import { useState } from "react";
 import taskFormSchema from "@/lib/validation/taskSchemas";
 
 import css from "./AddTaskForm.module.css";
+import { CustomDatePicker } from "@/components/shared/Calendar/CustomDatePicker";
 
 interface AddTaskFormProps {
   onClose: () => void;
@@ -70,7 +72,24 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
 
           <label className={css.label}>
             Дата
-            <Field as="input" className={css.input} name="date" type="date" />
+            <Field name="date">
+              {({ field, form, meta }: FieldProps) => (
+                <CustomDatePicker
+                  selected={field.value ? new Date(field.value) : null}
+                  onChange={(date: Date | null) => {
+                    form.setFieldValue(
+                      "date",
+                      date ? format(date, "yyyy-MM-dd") : ""
+                    );
+                  }}
+                  error={meta.touched && meta.error ? true : false}
+                  className={`${css.input} ${css.dateInput}`}
+                  placeholderText={format(new Date(), "dd.MM.yyyy")}
+                  id="date"
+                  showIcon={false}
+                />
+              )}
+            </Field>
             <ErrorMessage name="date" component="span" className={css.error} />
           </label>
 

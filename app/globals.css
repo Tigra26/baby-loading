@@ -137,6 +137,7 @@ textarea {
 .no-scroll {
   overflow: hidden;
 }
+
 .container {
   width: 100%;
   max-width: 375px;
@@ -155,4 +156,22 @@ textarea {
   .container {
     max-width: 1440px;
   }
+}
+
+.girl {
+  --color-scheme-foreground: var(--color-pastel-pink-lighter);
+  --color-scheme-foreground-alt: var(--color-pastel-pink-light);
+  --color-scheme-accent: var(--color-pastel-pink);
+}
+
+.boy {
+  --color-scheme-foreground: var(--color-french-pass-lighter);
+  --color-scheme-accent: var(--color-french-pass);
+  --color-scheme-foreground-alt: var(--color-french-pass-light);
+}
+
+.unknown {
+  --color-scheme-foreground: var(--color-oasis-light);
+  --color-scheme-foreground-alt: var(--color-oasis);
+  --color-scheme-accent: var(--color-oasis-dark);
 }
