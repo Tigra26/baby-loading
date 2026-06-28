@@ -31,3 +31,7 @@ export interface DiaryFormValues {
   description: string;
   emotions: string[];
 }
+
+export interface DeleteDiaryResponse {
+  _id: string;
+}

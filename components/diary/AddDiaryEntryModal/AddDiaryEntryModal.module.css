@@ -2,9 +2,6 @@
   font-family: var(--font-lato);
   border-radius: 40px;
   padding: 48px 20px;
-  width: 334px;
-  height: 695px;
-  max-width: 768px;
 }
 
 .modalTitle {
@@ -18,4 +15,18 @@
 }
 
 .closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  border: none;
+  background: transparent;
+
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.closeIcon {
+  fill: var(--color-scheme-text);
 }

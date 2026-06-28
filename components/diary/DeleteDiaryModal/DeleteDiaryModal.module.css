@@ -1,0 +1,64 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 40px;
+  padding: 64px 20px;
+  background: var(--color-scheme-background);
+}
+
+.modalTitle {
+  margin-bottom: 48px;
+  font-family: var(--font-comfortaa);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: var(--color-scheme-text);
+}
+
+.btnBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cancelBtn {
+  width: 268px;
+  height: 42px;
+  font-weight: 500;
+  line-height: 1.6;
+  border-bottom: 4px solid var(--color-scheme-accent);
+  border-radius: 100px;
+  padding: 10px 24px;
+  background: var(--color-scheme-foreground-alt);
+}
+
+.agreeBtn {
+  width: 268px;
+  height: 42px;
+  font-weight: 500;
+  line-height: 1.6;
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+  border-radius: 100px;
+  padding: 10px 24px;
+  background: var(--opacity-neutral-darkest-5);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  border: none;
+  background: transparent;
+
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.closeIcon {
+  fill: var(--color-scheme-text);
+}

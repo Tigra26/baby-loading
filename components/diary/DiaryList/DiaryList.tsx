@@ -5,6 +5,7 @@ import { DiaryProps } from "@/types/diary";
 import DiaryEntryCard from "../DiaryEntryCard/DiaryEntryCard";
 import AddDiaryEntryModal from "../AddDiaryEntryModal/AddDiaryEntryModal";
 import { useState } from "react";
+import { SvgIcon } from "../../shared/SvgIcon/SvgIcon";
 
 interface DiaryListProps {
   diary: DiaryProps;
@@ -21,8 +22,6 @@ const DiaryList = ({ diary }: DiaryListProps) => {
     setIsModalOpen(false);
   }
 
-  console.log(diary);
-
   return (
     <>
       <div className={css.diary}>
@@ -30,8 +29,17 @@ const DiaryList = ({ diary }: DiaryListProps) => {
           <h2 className={css.diaryTitle}>Ваші записи</h2>
           <div className={css.diaryCreate}>
             <p className={css.diaryCreateText}>Новий запис</p>
-            <button className={css.diaryCreateBtn} onClick={openModal}>
-              +
+            <button
+              type="button"
+              className={css.diaryCreateBtn}
+              onClick={openModal}
+              aria-label="Додати новий запис"
+            >
+              <SvgIcon
+                name="add_circle_icon"
+                size={24}
+                className={css.addIcon}
+              />
             </button>
           </div>
         </div>
