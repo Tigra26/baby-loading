@@ -31,3 +31,16 @@
   outline: 2px solid var(--color-scheme-text);
   outline-offset: 2px;
 }
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 600px;
+    margin-inline: auto;
+    padding: 6px;
+  }
+
+  .tab {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
