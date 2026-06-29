@@ -3,19 +3,13 @@
   flex-direction: column;
   gap: 16px;
 
+  flex: 1;
+  min-height: 0;
+
   overflow-y: auto;
-  max-height: 640px;
 
   scrollbar-width: thin;
   scrollbar-color: var(--color-scheme-accent) var(--color-scheme-foreground);
-
-  @media screen and (min-width: 768px) {
-    max-height: 656px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    max-height: 435px;
-  }
 
   &::-webkit-scrollbar {
     width: 4px;
