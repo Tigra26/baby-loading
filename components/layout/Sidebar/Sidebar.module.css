@@ -172,3 +172,57 @@
 .asideLogoutButton:focus {
   background-color: var(--color-scheme-foreground-alt);
 }
+
+/* modal */
+.modalContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 48px;
+}
+.modalLogoutTitle {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  width: 640px;
+  @media screen and (min-width: 1440px) {
+    font-size: 48px;
+  }
+}
+
+.modalButtonWrapper {
+  display: flex;
+  gap: 24px;
+}
+.acceptButton,
+.cancelButton {
+  border-radius: 100px;
+  padding: 10px 24px;
+  width: 268px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.acceptButton {
+  background: var(--color-scheme-foreground-alt);
+  border-bottom: 4px solid var(--color-scheme-accent);
+}
+.acceptButton:hover,
+.acceptButton:focus {
+  border-bottom: 4px solid var(--color-scheme-border);
+  background: var(--color-scheme-background);
+  transition: background-color 250ms;
+}
+.cancelButton {
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+  background: var(--opacity-neutral-darkest-5);
+}
+
+.cancelButton:hover,
+.cancelButton:focus {
+  background: var(--color-scheme-foreground);
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+}

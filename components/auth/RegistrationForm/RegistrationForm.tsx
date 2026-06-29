@@ -26,7 +26,7 @@ const RegistrationForm = () => {
     mutationKey: ["register"],
     mutationFn: register,
     onSuccess: () => {
-      router.replace("/");
+      router.replace("/profile/edit");
     },
     onError: (error) => {
       if (isAxiosError(error)) {
@@ -35,7 +35,7 @@ const RegistrationForm = () => {
           return;
         }
       }
-      toast.error("Лелека не знає що це за полмилка, спробуйте ще раз");
+      toast.error("Лелека не знає що це за помилка, спробуйте ще раз");
     },
   });
   const handleRegister = (values: RegisterProps) => {

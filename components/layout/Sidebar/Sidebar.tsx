@@ -1,21 +1,23 @@
 "use client";
+import Modal from "@/components/shared/Modal/Modal";
 import css from "./Sidebar.module.css";
 import Logo from "@/components/shared/Logo/Logo";
 import { SvgIcon } from "@/components/shared/SvgIcon/SvgIcon";
 import { logout } from "@/lib/api/authApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useSideBarStore } from "@/lib/store/sideBarStore";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueries, useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { getWeeksGreeting } from "@/lib/api/dashboardApi";
 
 const Sidebar = () => {
+  const [isShowModal, setIsShowModal] = useState(false);
   const { sideBarIsOpen, closeSideBar } = useSideBarStore();
-
   const pathName = usePathname();
   const { isAuthenticated, user, clearIsAuthenticated } = useAuthStore();
   const router = useRouter();
@@ -31,6 +33,11 @@ const Sidebar = () => {
     },
   });
 
+  const { data } = useQuery({
+    queryKey: ["greeting"],
+    queryFn: getWeeksGreeting,
+  });
+  console.log(data?.curWeekToPregnant);
   const handleBackDropClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.currentTarget === e.target) closeSideBar();
   };
@@ -39,6 +46,12 @@ const Sidebar = () => {
   };
   const handleClickOnLogout = () => {
     mutate();
+  };
+  const handleShowModal = () => {
+    setIsShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setIsShowModal(false);
   };
 
   return (
@@ -77,9 +90,10 @@ const Sidebar = () => {
               </li>
               <li>
                 <Link
-                  href="/journey"
+                  href={`/journey/${data?.curWeekToPregnant}`}
                   className={clsx(css.asideNavigationItemLink, {
-                    [css.active]: pathName === "/journey",
+                    [css.active]:
+                      pathName === `/journey/${data?.curWeekToPregnant}`,
                   })}
                 >
                   <SvgIcon name="conversion" />
@@ -128,7 +142,7 @@ const Sidebar = () => {
                   <Image
                     width={44}
                     height={44}
-                    src={user?.avatarUrl || "/images/defaultAvatar.png"}
+                    src={user?.avatarUrl || "/icons/avatar_icon.svg"}
                     alt="Profile avatar"
                     className={css.sidebarProfileAvatar}
                   />
@@ -140,7 +154,7 @@ const Sidebar = () => {
               </div>
               <button
                 type="button"
-                onClick={handleClickOnLogout}
+                onClick={handleShowModal}
                 className={css.asideLogoutButton}
               >
                 <SvgIcon name="logout" />
@@ -149,6 +163,24 @@ const Sidebar = () => {
           )}
         </div>
       </aside>
+      {isShowModal && (
+        <Modal onClose={handleCloseModal}>
+          <div className={css.modalContentWrapper}>
+            <p className={css.modalLogoutTitle}>Ви точно хочете вийти?</p>
+            <div className={css.modalButtonWrapper}>
+              <button
+                onClick={handleClickOnLogout}
+                className={css.acceptButton}
+              >
+                Так
+              </button>
+              <button onClick={handleCloseModal} className={css.cancelButton}>
+                Ні
+              </button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };
