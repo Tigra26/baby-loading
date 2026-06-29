@@ -180,7 +180,9 @@
   border-radius: 100px;
   font-weight: 500;
   text-align: center;
-  transition: border-color 250ms ease;
+  transition:
+    border-color 250ms ease,
+    background-color 250ms ease;
 
   @media screen and (min-width: 768px) {
     flex: none;
