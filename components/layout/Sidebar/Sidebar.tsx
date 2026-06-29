@@ -6,7 +6,7 @@ import { SvgIcon } from "@/components/shared/SvgIcon/SvgIcon";
 import { logout } from "@/lib/api/authApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useSideBarStore } from "@/lib/store/sideBarStore";
-import { useMutation, useQueries, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -142,7 +142,7 @@ const Sidebar = () => {
                   <Image
                     width={44}
                     height={44}
-                    src={user?.avatarUrl || "/icons/avatar_icon.svg"}
+                    src={user?.avatarUrl || "/images/women-default-avatar.jpg"}
                     alt="Profile avatar"
                     className={css.sidebarProfileAvatar}
                   />

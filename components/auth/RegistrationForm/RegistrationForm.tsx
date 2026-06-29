@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { registerSchema } from "@/lib/validation/authSchemas";
 import { isAxiosError } from "axios";
-import Loader from "@/components/shared/Loader/Loader";
 import { MoonLoader } from "react-spinners";
 import { useState } from "react";
 

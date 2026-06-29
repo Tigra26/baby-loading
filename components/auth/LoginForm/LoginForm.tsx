@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { loginSchema } from "@/lib/validation/authSchemas";
-import { User } from "@/types/user";
 import { useAuthStore } from "@/lib/store/authStore";
 import { isAxiosError } from "axios";
 import { MoonLoader } from "react-spinners";
