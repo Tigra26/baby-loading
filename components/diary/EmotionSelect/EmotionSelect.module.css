@@ -7,11 +7,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 8px 12px;
   border: 1px solid var(--opacity-transparent);
   border-radius: 12px;
   background: var(--color-neutral-lightest);
   cursor: pointer;
+  outline: none;
 }
 
 .open {
@@ -71,4 +73,34 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 1.6;
+}
+.arrow {
+  margin-left: auto;
+  fill: var(--opacity-neutral-darkest-60);
+}
+.checkbox {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--color-neutral-lightest);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  background: var(--opacity-neutral-darkest-5);
+}
+.checkbox:checked + .checkmark {
+  background: var(--color-neutral-darkest);
+  border-color: var(--color-neutral-darkest);
+}
+.checkmark svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

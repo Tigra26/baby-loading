@@ -4,7 +4,7 @@
   border-radius: 32px;
   padding: 24px 16px;
   background: var(--color-scheme-foreground);
-  margin: 32px 20px;
+  margin: 32px 0;
 }
 
 .diaryHeader {
@@ -46,4 +46,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.addIcon {
+  fill: var(--color-scheme-text);
 }

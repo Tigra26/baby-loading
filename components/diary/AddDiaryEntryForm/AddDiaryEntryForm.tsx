@@ -1,12 +1,29 @@
-import { Formik, Form, Field, type FormikHelpers, ErrorMessage } from "formik";
+import {
+  Formik,
+  Form,
+  Field,
+  type FormikHelpers,
+  ErrorMessage,
+  useField,
+  FieldProps,
+} from "formik";
 import { DiaryFormValues } from "@/types/diary";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { diaryFormSchema } from "@/lib/validation/diarySchemas";
-import { createDiaryNote, getEmotions } from "@/lib/api/diaryApi";
+import {
+  createDiaryNote,
+  getEmotions,
+  updateDiaryNote,
+} from "@/lib/api/diaryApi";
 import css from "./AddDiaryEntryForm.module.css";
 import EmotionSelect from "../EmotionSelect/EmotionSelect";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import clsx from "clsx";
 
 interface DiaryFormProps {
+  initialValues?: DiaryFormValues;
+  noteId?: string;
   onClose: () => void;
 }
 
@@ -15,13 +32,17 @@ type MutationVariables = {
   actions: FormikHelpers<DiaryFormValues>;
 };
 
-const initialValues: DiaryFormValues = {
+export const defaultValues: DiaryFormValues = {
   title: "",
   description: "",
   emotions: [],
 };
 
-const AddDiaryEntryForm = ({ onClose }: DiaryFormProps) => {
+const AddDiaryEntryForm = ({
+  initialValues,
+  noteId,
+  onClose,
+}: DiaryFormProps) => {
   const { data } = useQuery({
     queryKey: ["emotions"],
     queryFn: getEmotions,
@@ -29,17 +50,28 @@ const AddDiaryEntryForm = ({ onClose }: DiaryFormProps) => {
 
   const emotions = data?.emotions ?? [];
 
+  const router = useRouter();
+
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
-    mutationFn: ({ values }: MutationVariables) => createDiaryNote(values),
+    mutationFn: ({ values }: MutationVariables) => {
+      if (noteId) {
+        return updateDiaryNote(noteId, values);
+      }
+
+      return createDiaryNote(values);
+    },
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
       variables.actions.resetForm();
-      // toast.success("Note added successfully!");
+      router.refresh();
+      toast.success(
+        noteId ? "Запис успішно оновлено!" : "Нотатку успішно додано!"
+      );
       onClose();
     },
     onError: () => {
-      // toast.error("Oops, something went wrong. Note not added");
+      toast.error("Ой, щось пішло не так. Нотатку не додано.");
     },
   });
 
@@ -52,22 +84,30 @@ const AddDiaryEntryForm = ({ onClose }: DiaryFormProps) => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={initialValues ?? defaultValues}
       onSubmit={handleSubmit}
       validationSchema={diaryFormSchema}
+      enableReinitialize
     >
       <Form className={css.form}>
         <div className={css.formGroup}>
           <label htmlFor="title" className={css.label}>
             Заголовок
           </label>
-          <Field
-            id="title"
-            type="text"
-            name="title"
-            className={css.input}
-            placeholder="Введіть заголовок запису"
-          />
+          <Field name="title">
+            {({ field, meta }: FieldProps) => (
+              <input
+                {...field}
+                id="title"
+                type="text"
+                placeholder="Введіть заголовок запису"
+                className={clsx(
+                  css.input,
+                  meta.touched && meta.error && css.inputError
+                )}
+              />
+            )}
+          </Field>
           <ErrorMessage name="title" component={"span"} className={css.error} />
         </div>
 
