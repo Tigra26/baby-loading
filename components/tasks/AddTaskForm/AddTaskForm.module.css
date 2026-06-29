@@ -1,3 +1,11 @@
+.taskDiv {
+  padding: 48px 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 64px 0;
+  }
+}
+
 .title {
   font-family: var(--second-family);
   font-weight: 700;
@@ -87,4 +95,17 @@
   font-size: 12px;
   line-height: 1.6;
   color: var(--color-red);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  border: none;
+  background: transparent;
+}
+
+.closeIcon {
+  fill: var(--color-scheme-text);
 }

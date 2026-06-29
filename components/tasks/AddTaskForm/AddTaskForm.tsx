@@ -11,6 +11,7 @@ import taskFormSchema from "@/lib/validation/taskSchemas";
 
 import css from "./AddTaskForm.module.css";
 import { CustomDatePicker } from "@/components/shared/Calendar/CustomDatePicker";
+import { SvgIcon } from "@/components/shared/SvgIcon/SvgIcon";
 
 interface AddTaskFormProps {
   onClose: () => void;
@@ -49,7 +50,16 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
   };
 
   return (
-    <>
+    <div className={css.taskDiv}>
+      <button
+        type="button"
+        className={css.closeBtn}
+        onClick={onClose}
+        aria-label="Закрити вікно"
+      >
+        <SvgIcon name="close" size={24} className={css.closeIcon} />
+      </button>
+
       <h2 className={css.title}>Нове завдання</h2>
 
       <Formik
@@ -98,7 +108,7 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
           </button>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 };
 
