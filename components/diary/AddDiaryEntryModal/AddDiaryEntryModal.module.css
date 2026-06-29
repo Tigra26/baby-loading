@@ -2,6 +2,9 @@
   font-family: var(--font-lato);
   border-radius: 40px;
   padding: 48px 0px;
+  @media screen and (min-width: 768) {
+    padding: 64px 0px;
+  }
 }
 
 .modalTitle {
