@@ -5,6 +5,8 @@
   padding: 24px 16px;
   background: var(--color-scheme-foreground);
   margin: 32px 0;
+
+  min-height: calc(100dvh - 170px);
 }
 
 .diaryHeader {
