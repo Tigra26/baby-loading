@@ -49,7 +49,7 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
   };
 
   return (
-    <>
+    <div className={css.taskDiv}>
       <h2 className={css.title}>Нове завдання</h2>
 
       <Formik
@@ -98,7 +98,7 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
           </button>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 };
 

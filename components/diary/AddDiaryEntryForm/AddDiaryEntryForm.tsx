@@ -4,7 +4,6 @@ import {
   Field,
   type FormikHelpers,
   ErrorMessage,
-  useField,
   FieldProps,
 } from "formik";
 import { DiaryFormValues } from "@/types/diary";

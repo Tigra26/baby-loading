@@ -2,7 +2,7 @@
   display: flex;
   padding: 4px;
   border-radius: 100px;
-  background: var(--color-pastel-pink-lighter);
+  background: var(--color-scheme-foreground);
 }
 
 .tab {
@@ -24,7 +24,7 @@
 
 .tab.active {
   font-weight: 500;
-  background: var(--color-pastel-pink-light);
+  background: var(--сolor-scheme-foreground-alt);
 }
 
 .tab:focus-visible {

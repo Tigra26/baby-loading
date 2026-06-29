@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { OnboardingForm } from "@/components/auth/OnboardingForm/OnboardingForm";
+import Logo from "@/components/shared/Logo/Logo";
 import css from "./pageEdit.module.css";
 
 export default function OnboardingPage() {
@@ -7,11 +8,14 @@ export default function OnboardingPage() {
     <main className={css.page}>
       <div className={`container ${css.onboardingContainer}`}>
         <div className={css.formColumn}>
+          <div className={css.logoWrapper}>
+            <Logo />
+          </div>
+
           <div className={css.formWrapper}>
             <OnboardingForm />
           </div>
         </div>
-
         <Image
           width={720}
           height={900}

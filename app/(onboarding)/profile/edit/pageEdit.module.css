@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.logoWrapper {
+  margin-top: 21px;
+}
+
 .formColumn {
   width: 100%;
   max-width: 375px;
@@ -29,6 +33,14 @@
 @media screen and (min-width: 1440px) {
   .onboardingContainer {
     padding: 0;
+  }
+  .logoWrapper {
+    margin-top: 21px;
+    margin-left: 64px;
+  }
+
+  .page > header {
+    display: block;
   }
 
   .formColumn {
