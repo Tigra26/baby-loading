@@ -7,10 +7,6 @@ export default function OnboardingPage() {
     <main className={css.page}>
       <div className={`container ${css.onboardingContainer}`}>
         <div className={css.formColumn}>
-          <div className={css.logoWrapper}>
-            <p className={css.logoPlaceholder}>Лелека</p>
-          </div>
-
           <div className={css.formWrapper}>
             <OnboardingForm />
           </div>
