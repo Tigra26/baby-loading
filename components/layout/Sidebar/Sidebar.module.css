@@ -1,0 +1,228 @@
+.asideBackDrop {
+  inset: 0;
+  position: fixed;
+  visibility: hidden;
+  transition: background 250ms ease;
+  @media screen and (min-width: 1440px) {
+    display: none;
+  }
+}
+
+.asideBackDrop.openBackDrop {
+  visibility: visible;
+  background: var(--opacity-neutral-darkest-50);
+}
+
+.sideBar {
+  position: fixed;
+  top: 0;
+  transform: translateX(-100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--foreground);
+  width: 300px;
+  height: 100vh;
+  background: var(--color-scheme-background);
+  transition: transform 250ms ease;
+
+  @media screen and (min-width: 1440px) {
+    position: relative;
+    transform: unset;
+    width: 350px;
+    border-right: 1px solid var(--color-scheme-border);
+  }
+}
+
+.sideBar.open {
+  transform: translateX(0);
+}
+
+.asideCloseButton {
+  @media screen and (min-width: 1440px) {
+    display: none;
+  }
+}
+
+.asideHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+}
+
+.asideNavigation {
+  padding: 0 16px;
+}
+
+.asideNavigationList {
+  display: flex;
+  flex-direction: column;
+}
+
+.asideNavigationItemLink {
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 250ms;
+}
+
+.asideNavigationItemLink:hover,
+.asideNavigationItemLink:focus {
+  background: var(--color-scheme-foreground);
+}
+
+.asideNavigationItemLink.active {
+  background: var(--color-scheme-foreground);
+}
+
+.asideLinkText {
+  color: var(--color-scheme-text);
+  line-height: 150%;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.asideFooter {
+  padding: 0 16px;
+  box-sizing: content-box;
+}
+
+.asideFooterAuthLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  border-top: 1px solid var(--color-scheme-border);
+  padding: 16px 0;
+}
+
+.asideRegistrationLink,
+.asideLoginLink {
+  border-radius: 100px;
+  padding: 10px 24px;
+  width: 268px;
+  height: 42px;
+  text-align: center;
+}
+
+.asideRegistrationLink {
+  border-bottom: 4px solid var(--color-scheme-accent);
+  background: var(--color-scheme-foreground-alt);
+  transition: background-color 250ms;
+}
+
+.asideRegistrationLink:hover,
+.asideRegistrationLink:focus {
+  border-bottom: 4px solid var(--color-scheme-border);
+  background: var(--color-scheme-background);
+}
+
+.asideRegistrationLink:active {
+  background: var(--color-neutral-light);
+  border-bottom: none;
+}
+
+.asideLoginLink {
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+  background: var(--opacity-neutral-darkest-5);
+  transition: background-color 250ms;
+}
+
+.asideLoginLink:hover,
+.asideLoginLink:focus {
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+  background: var(--color-scheme-foreground);
+}
+.asideLoginLink:active {
+  border-bottom: none;
+  background: var(--color-scheme-accent);
+}
+
+.asideFooterProfile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: content-box;
+  border-top: 1px solid var(--color-scheme-border);
+  padding: 16px 0;
+}
+
+.sidebarProfileAvatar {
+  border-radius: 50%;
+}
+
+.profileWrapper {
+  display: flex;
+  gap: 8px;
+}
+.asideLogoutButton {
+  border-radius: 50px;
+  height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 250ms;
+}
+
+.asideLogoutButton:hover,
+.asideLogoutButton:focus {
+  background-color: var(--color-scheme-foreground-alt);
+}
+
+/* modal */
+.modalContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 48px;
+}
+.modalLogoutTitle {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  width: 640px;
+  @media screen and (min-width: 1440px) {
+    font-size: 48px;
+  }
+}
+
+.modalButtonWrapper {
+  display: flex;
+  gap: 24px;
+}
+.acceptButton,
+.cancelButton {
+  border-radius: 100px;
+  padding: 10px 24px;
+  width: 268px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.acceptButton {
+  background: var(--color-scheme-foreground-alt);
+  border-bottom: 4px solid var(--color-scheme-accent);
+}
+.acceptButton:hover,
+.acceptButton:focus {
+  border-bottom: 4px solid var(--color-scheme-border);
+  background: var(--color-scheme-background);
+  transition: background-color 250ms;
+}
+.cancelButton {
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+  background: var(--opacity-neutral-darkest-5);
+}
+
+.cancelButton:hover,
+.cancelButton:focus {
+  background: var(--color-scheme-foreground);
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+}
