@@ -16,26 +16,11 @@
   background-color: var(--color-scheme-background);
 }
 
-.logoWrapper {
-  padding: 13px 20px;
-}
-
-.logoPlaceholder {
-  color: var(--color-scheme-text);
-  font-family: var(--font-family);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.6;
-}
-
 .decorImage {
   display: none;
 }
 
 @media screen and (min-width: 768px) {
-  .logoWrapper {
-    padding: 13px 32px;
-  }
   .formColumn {
     max-width: 768px;
   }
@@ -45,9 +30,7 @@
   .onboardingContainer {
     padding: 0;
   }
-  .logoWrapper {
-    padding: 13px 64px;
-  }
+
   .formColumn {
     width: 720px;
     max-width: 720px;
