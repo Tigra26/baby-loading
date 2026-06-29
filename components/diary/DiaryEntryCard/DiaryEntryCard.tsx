@@ -7,13 +7,24 @@ interface DiaryEntryCardProps {
 }
 
 const DiaryEntryCard = ({ note }: DiaryEntryCardProps) => {
+  const formatDate = (date: string) => {
+    const d = new Date(date);
+
+    const day = d.getDate();
+    const month = new Intl.DateTimeFormat("uk-UA", {
+      month: "long",
+    }).format(d);
+    const year = d.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  };
   return (
     <>
       <Link href={`/diary/${note._id}`}>
         <div className={css.card}>
           <div className={css.main}>
             <h3 className={css.title}>{note.title}</h3>
-            <p className={css.date}>{note.date}</p>
+            <p className={css.date}>{formatDate(note.date)}</p>
           </div>
 
           <div className={css.emotionalBlock}>

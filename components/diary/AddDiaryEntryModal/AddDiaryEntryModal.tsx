@@ -18,7 +18,6 @@ const AddDiaryEntryModal = ({
   return (
     <Modal onClose={onClose}>
       <div className={css.modal}>
-        {" "}
         <h2 className={css.modalTitle}>
           {noteId ? "Редагувати запис" : "Новий запис"}
         </h2>

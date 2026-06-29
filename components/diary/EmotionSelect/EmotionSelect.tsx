@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useField } from "formik";
 import { Emotion } from "@/types/diary";
 import css from "./EmotionSelect.module.css";
+import { SvgIcon } from "../../shared/SvgIcon/SvgIcon";
 
 interface EmotionSelectProps {
   emotions: Emotion[];
@@ -32,6 +33,7 @@ export default function EmotionSelect({ emotions }: EmotionSelectProps) {
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         className={`${css.trigger} ${isOpen ? css.open : ""}`}
+        aria-expanded={isOpen}
       >
         {field.value.length === 0 ? (
           <span>Оберіть категорію</span>
@@ -44,6 +46,11 @@ export default function EmotionSelect({ emotions }: EmotionSelectProps) {
             ))}
           </div>
         )}
+        <SvgIcon
+          name={isOpen ? "arrowUp" : "arrowDown"}
+          size={24}
+          className={css.arrow}
+        />
       </button>
 
       {isOpen && (
@@ -54,8 +61,13 @@ export default function EmotionSelect({ emotions }: EmotionSelectProps) {
                 type="checkbox"
                 checked={field.value.includes(emotion._id)}
                 onChange={() => toggleEmotion(emotion._id)}
+                className={css.checkbox}
               />
-
+              <span className={css.checkmark}>
+                {field.value.includes(emotion._id) && (
+                  <SvgIcon name="checkbox" size={13} className={css.icon} />
+                )}
+              </span>
               <span className={css.optionTitle}>{emotion.title}</span>
             </label>
           ))}

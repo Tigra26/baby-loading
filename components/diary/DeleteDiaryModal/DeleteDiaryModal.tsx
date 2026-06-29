@@ -20,6 +20,7 @@ const DeleteDiaryModal = ({ onClose, noteId }: DeleteDiaryModalProps) => {
     onClose();
     toast.success("Нотатку видалено");
     router.back();
+    router.refresh();
   };
   return (
     <>

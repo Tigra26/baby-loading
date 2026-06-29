@@ -1,4 +1,12 @@
-import { Formik, Form, Field, type FormikHelpers, ErrorMessage } from "formik";
+import {
+  Formik,
+  Form,
+  Field,
+  type FormikHelpers,
+  ErrorMessage,
+  useField,
+  FieldProps,
+} from "formik";
 import { DiaryFormValues } from "@/types/diary";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { diaryFormSchema } from "@/lib/validation/diarySchemas";
@@ -11,6 +19,7 @@ import css from "./AddDiaryEntryForm.module.css";
 import EmotionSelect from "../EmotionSelect/EmotionSelect";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import clsx from "clsx";
 
 interface DiaryFormProps {
   initialValues?: DiaryFormValues;
@@ -85,13 +94,20 @@ const AddDiaryEntryForm = ({
           <label htmlFor="title" className={css.label}>
             Заголовок
           </label>
-          <Field
-            id="title"
-            type="text"
-            name="title"
-            className={css.input}
-            placeholder="Введіть заголовок запису"
-          />
+          <Field name="title">
+            {({ field, meta }: FieldProps) => (
+              <input
+                {...field}
+                id="title"
+                type="text"
+                placeholder="Введіть заголовок запису"
+                className={clsx(
+                  css.input,
+                  meta.touched && meta.error && css.inputError
+                )}
+              />
+            )}
+          </Field>
           <ErrorMessage name="title" component={"span"} className={css.error} />
         </div>
 

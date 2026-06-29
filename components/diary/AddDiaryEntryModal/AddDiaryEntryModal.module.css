@@ -1,7 +1,7 @@
 .modal {
   font-family: var(--font-lato);
   border-radius: 40px;
-  padding: 48px 20px;
+  padding: 48px 0px;
 }
 
 .modalTitle {
