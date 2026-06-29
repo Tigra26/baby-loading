@@ -32,6 +32,7 @@ const RegistrationForm = () => {
       if (isAxiosError(error)) {
         if (error.status === 409) {
           setIsRegError(true);
+          return;
         }
       }
       toast.error("Лелека не знає що це за полмилка, спробуйте ще раз");

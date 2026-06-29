@@ -34,6 +34,7 @@ const LoginForm = () => {
       if (isAxiosError(error)) {
         if (error.status === 401) {
           setIsAuthError(true);
+          return;
         }
       }
       toast.error("Лелека не знає що це за полмилка, спробуйте ще раз");
