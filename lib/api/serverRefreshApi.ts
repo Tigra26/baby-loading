@@ -1,18 +1,14 @@
+import { cookies } from "next/headers";
 import { apiClient } from "./client";
 
-type RefreshSessionResponse = {
-  success: boolean;
-};
+export const serverRefreshSession = async () => {
+  const cookieStore = await cookies();
 
-export const serverRefreshSession = async (cookieHeader: string) => {
-  const response = await apiClient.get<RefreshSessionResponse>(
-    "/auth/session",
-    {
-      headers: {
-        Cookie: cookieHeader,
-      },
-    }
-  );
+  const response = await apiClient.get<boolean>("/auth/session", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
 
   return response;
 };
