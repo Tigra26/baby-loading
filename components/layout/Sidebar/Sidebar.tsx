@@ -36,6 +36,7 @@ const Sidebar = () => {
   const { data } = useQuery({
     queryKey: ["greeting"],
     queryFn: getWeeksGreeting,
+    enabled: isAuthenticated,
   });
   const handleBackDropClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.currentTarget === e.target) closeSideBar();
