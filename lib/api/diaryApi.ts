@@ -6,8 +6,16 @@ import {
 } from "@/types/diary";
 import { apiClient } from "./client";
 
-export const getEmotions = async (): Promise<EmotionsProps> => {
-  const response = await apiClient.get<EmotionsProps>("/emotions");
+export const getEmotions = async (
+  page: number,
+  limit: number
+): Promise<EmotionsProps> => {
+  const response = await apiClient.get<EmotionsProps>("/emotions", {
+    params: {
+      page,
+      limit,
+    },
+  });
   return response.data;
 };
 

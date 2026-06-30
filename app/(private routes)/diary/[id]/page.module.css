@@ -1,0 +1,29 @@
+.greeting {
+  display: none;
+}
+.list {
+  display: none;
+}
+
+.wrapper {
+  display: block;
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+    align-items: start;
+
+    min-height: calc(100dvh - 170px);
+  }
+  .greeting,
+  .list {
+    display: block;
+  }
+
+  .details {
+    margin: 32px 0;
+  }
+}

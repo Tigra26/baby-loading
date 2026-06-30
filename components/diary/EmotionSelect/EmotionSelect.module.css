@@ -53,6 +53,15 @@
   overflow-y: auto;
 
   z-index: 100;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scheme-foreground-alt)
+    var(--color-neutral-lightest);
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  width: 10px;
+  border-radius: 10px;
 }
 
 .option {
