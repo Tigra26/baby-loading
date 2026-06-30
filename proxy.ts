@@ -14,7 +14,12 @@ const proxy = async (request: NextRequest) => {
   const isPublicRoute = publicRoutes.some((r) => pathname.startsWith(r));
   const isPrivateRoute = privateRoutes.some((r) => pathname.startsWith(r));
 
-  const response = NextResponse.next();
+  const requestHeaders = new Headers(request.headers);
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 
   if (!accessToken && refreshToken) {
     try {
@@ -27,6 +32,8 @@ const proxy = async (request: NextRequest) => {
       if (setCookie) {
         const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
 
+        const refreshedCookies: string[] = [];
+
         for (const cookieStr of cookieArray) {
           const parsed = parse(cookieStr);
 
@@ -38,11 +45,22 @@ const proxy = async (request: NextRequest) => {
 
           if (parsed.accessToken) {
             response.cookies.set("accessToken", parsed.accessToken, options);
+            refreshedCookies.push(`accessToken=${parsed.accessToken}`);
           }
 
           if (parsed.refreshToken) {
             response.cookies.set("refreshToken", parsed.refreshToken, options);
+            refreshedCookies.push(`refreshToken=${parsed.refreshToken}`);
           }
+        }
+
+        if (refreshedCookies.length > 0) {
+          const existingCookie = requestHeaders.get("cookie");
+
+          requestHeaders.set(
+            "cookie",
+            [existingCookie, ...refreshedCookies].filter(Boolean).join("; ")
+          );
         }
       }
     } catch {
