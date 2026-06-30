@@ -3,7 +3,7 @@ import DiaryList from "@/components/diary/DiaryList/DiaryList";
 import { getDiaryList } from "@/lib/api/diaryApi.server";
 import css from "./page.module.css";
 
-export default async function DiaryPage() {
+const DiaryPage = async () => {
   const diary = await getDiaryList();
 
   return (
@@ -17,4 +17,6 @@ export default async function DiaryPage() {
       </div>
     </>
   );
-}
+};
+
+export default DiaryPage;

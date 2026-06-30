@@ -6,11 +6,11 @@ import { getDiaryList } from "@/lib/api/diaryApi.server";
 
 import css from "./page.module.css";
 
-export default async function DiaryNotePage({
+const DiaryNotePage = async ({
   params,
 }: {
   params: Promise<{ id: string }>;
-}) {
+}) => {
   const { id } = await params;
 
   const diary = await getDiaryList();
@@ -37,4 +37,6 @@ export default async function DiaryNotePage({
       </div>
     </>
   );
-}
+};
+
+export default DiaryNotePage;
