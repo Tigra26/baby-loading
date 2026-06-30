@@ -1,14 +1,9 @@
-import { cookies } from "next/headers";
 import { apiClient } from "./client";
 
-export const serverRefreshSession = async () => {
-  const cookieStore = await cookies();
-
-  const response = await apiClient.get<boolean>("/auth/session", {
+export const serverRefreshSession = async (cookie: string) => {
+  return apiClient.get("/auth/session", {
     headers: {
-      Cookie: cookieStore.toString(),
+      Cookie: cookie,
     },
   });
-
-  return response;
 };
