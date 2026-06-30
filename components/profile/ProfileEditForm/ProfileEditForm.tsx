@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { Formik, Form, Field, FieldProps, ErrorMessage } from "formik";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
@@ -57,16 +57,22 @@ export const ProfileEditForm = () => {
     },
   });
 
-  const initialValues = {
-    name: user?.name || "",
-    email: user?.email || "",
-    babyGender: user?.babyGender || "",
-    dueDate: user?.dueDate || "",
-  };
+  const initialValues = useMemo(
+    () => ({
+      name: user?.name ?? "",
+      email: user?.email ?? "",
+      babyGender: user?.babyGender ?? "",
+      dueDate: user?.dueDate ?? "",
+    }),
+
+    [user]
+  );
 
   const handleFormSubmit = (values: typeof initialValues) => {
     mutate(values);
   };
+
+  if (!user) return null;
 
   return (
     <Formik
