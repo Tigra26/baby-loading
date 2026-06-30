@@ -40,8 +40,16 @@ const validateOnboardingForm = (
     errors.babyGender = "Оберіть стать дитини";
   }
 
-  if (!values.dueDate) {
-    errors.dueDate = "Оберіть планову дату пологів";
+  if (values.dueDate) {
+    const selectedDate = new Date(values.dueDate);
+    const today = new Date();
+
+    selectedDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+      errors.dueDate = "Дата пологів не може бути в минулому";
+    }
   }
 
   return errors;
@@ -313,6 +321,7 @@ export const OnboardingForm = () => {
                       error={Boolean(meta.error && meta.touched)}
                       placeholderText="16.07.2025"
                       className={css.input}
+                      minDate={new Date()}
                       onChange={(date: Date | null) => {
                         form.setFieldValue(
                           "dueDate",

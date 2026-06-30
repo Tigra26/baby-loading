@@ -193,6 +193,7 @@ export const ProfileEditForm = () => {
                     error={Boolean(meta.error && meta.touched)}
                     placeholderText="16.07.2025"
                     className={css.input}
+                    minDate={new Date()}
                     onChange={(date: Date | null) => {
                       form.setFieldValue(
                         "dueDate",

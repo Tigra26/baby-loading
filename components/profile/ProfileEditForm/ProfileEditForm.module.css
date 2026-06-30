@@ -59,6 +59,16 @@
   color: transparent;
 }
 
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--opacity-neutral-darkest-60);
+}
+
+.input:disabled:focus {
+  border-color: var(--opacity-transparent);
+}
+
 .customSelectContainer {
   position: relative;
   width: 100%;
