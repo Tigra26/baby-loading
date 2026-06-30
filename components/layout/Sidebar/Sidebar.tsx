@@ -37,7 +37,6 @@ const Sidebar = () => {
     queryKey: ["greeting"],
     queryFn: getWeeksGreeting,
   });
-  console.log(data?.curWeekToPregnant);
   const handleBackDropClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.currentTarget === e.target) closeSideBar();
   };
