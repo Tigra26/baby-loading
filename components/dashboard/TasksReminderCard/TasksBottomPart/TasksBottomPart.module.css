@@ -30,6 +30,11 @@
   line-height: 1.6;
   color: var(--color-scheme-text);
 
+  @media screen and (min-width: 1440px) {
+    width: 191px;
+    height: 46px;
+  }
+
   transition:
     background 250ms ease,
     border-bottom 250ms ease;

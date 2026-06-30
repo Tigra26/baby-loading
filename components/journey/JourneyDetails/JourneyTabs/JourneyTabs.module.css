@@ -24,7 +24,7 @@
 
 .tab.active {
   font-weight: 500;
-  background: var(--сolor-scheme-foreground-alt);
+  background: var(--color-scheme-foreground-alt);
 }
 
 .tab:focus-visible {

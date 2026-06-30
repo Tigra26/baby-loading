@@ -17,7 +17,7 @@ const TaskReminderCard = () => {
     <div className={css.container}>
       <TasksUpperPart />
 
-      {data && data.length === 0 ? (
+      {(data && data.length === 0) || !data ? (
         <TasksBottomPart />
       ) : (
         <TasksList task={data} />
