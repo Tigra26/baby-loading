@@ -27,9 +27,9 @@ const DiaryEntryCard = ({ note }: DiaryEntryCardProps) => {
             <p className={css.date}>{formatDate(note.date)}</p>
           </div>
 
-          <div className={css.emotionalBlock}>
+          <div className={css.emotionBlock}>
             {note.emotions.map((emotion) => (
-              <p className={css.emotional} key={emotion._id}>
+              <p className={css.emotion} key={emotion._id}>
                 {emotion.title}
               </p>
             ))}
