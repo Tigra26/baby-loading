@@ -2,7 +2,7 @@
 
 import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
 import { toast } from "react-toastify";
-import { format } from "date-fns";
+import { format, startOfDay, parseISO } from "date-fns";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createTask, TaskCreationProps } from "@/lib/api/tasksApi";
@@ -23,6 +23,8 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
   });
 
   const queryClient = useQueryClient();
+
+  const today = startOfDay(new Date());
 
   const mutation = useMutation({
     mutationKey: ["createTask"],
@@ -75,20 +77,20 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
             <Field name="date">
               {({ field, form, meta }: FieldProps) => (
                 <CustomDatePicker
-                  selected={field.value ? new Date(field.value) : null}
+                  selected={field.value ? parseISO(field.value) : null}
                   onChange={(date: Date | null) => {
                     form.setFieldValue(
                       "date",
                       date ? format(date, "yyyy-MM-dd") : ""
                     );
-                    form.setFieldTouched("date", true);
+                    form.setFieldTouched("date", true, false);
                   }}
                   error={Boolean(meta.touched && meta.error)}
                   className={`${css.input} ${css.dateInput}`}
                   placeholderText={format(new Date(), "dd.MM.yyyy")}
                   id="date"
                   showIcon={false}
-                  minDate={new Date()}
+                  minDate={today}
                 />
               )}
             </Field>
