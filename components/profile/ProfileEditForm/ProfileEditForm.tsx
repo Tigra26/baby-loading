@@ -22,7 +22,6 @@ const GENDER_OPTIONS = [
 export const ProfileEditForm = () => {
   const { user, updateUserFields } = useAuthStore();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const [focused, setFocused] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -111,6 +110,7 @@ export const ProfileEditForm = () => {
                   {...field}
                   id="email"
                   type="email"
+                  disabled
                   placeholder="hanna@gmail.com"
                   className={`${css.input} ${meta.error && meta.touched ? css.inputError : ""}`}
                 />

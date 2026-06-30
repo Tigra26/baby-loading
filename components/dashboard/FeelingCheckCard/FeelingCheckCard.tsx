@@ -4,12 +4,21 @@ import AddDiaryEntryModal from "@/components/diary/AddDiaryEntryModal/AddDiaryEn
 import { useState } from "react";
 
 import css from "./FeelCheckCard.module.css";
+import { useAuthStore } from "@/lib/store/authStore";
+import { useRouter } from "next/navigation";
 
 const FeelingCheckCard = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const user = useAuthStore((state) => state.user);
+
+  const router = useRouter();
 
   const handleModalOpen = () => {
-    setIsOpen(true);
+    if (user) {
+      setIsOpen(true);
+    } else {
+      router.push("/auth/register");
+    }
   };
 
   const handleModalClose = () => {

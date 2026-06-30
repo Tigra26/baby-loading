@@ -5,12 +5,21 @@ import AddTaskForm from "@/components/tasks/AddTaskForm/AddTaskForm";
 import Modal from "@/components/shared/Modal/Modal";
 
 import css from "./TasksBottomPart.module.css";
+import { useAuthStore } from "@/lib/store/authStore";
+import { useRouter } from "next/navigation";
 
 const TasksBottomPart = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const user = useAuthStore((state) => state.user);
+
+  const router = useRouter();
 
   const handleAddTask = () => {
-    setIsOpen(true);
+    if (user) {
+      setIsOpen(true);
+    } else {
+      router.push("/auth/register");
+    }
   };
 
   const handleModalClose = () => {
