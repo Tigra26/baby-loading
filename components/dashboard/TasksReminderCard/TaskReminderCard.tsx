@@ -6,11 +6,15 @@ import TasksBottomPart from "./TasksBottomPart/TasksBottomPart";
 import TasksList from "./TasksList/TasksList";
 import { useQuery } from "@tanstack/react-query";
 import { getTasks } from "@/lib/api/tasksApi";
+import { useAuthStore } from "@/lib/store/authStore";
 
 const TaskReminderCard = () => {
+  const user = useAuthStore((state) => state.user);
+
   const { data } = useQuery({
     queryKey: ["tasks"],
     queryFn: () => getTasks(),
+    enabled: !!user,
   });
 
   return (

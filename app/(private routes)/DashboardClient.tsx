@@ -1,21 +1,35 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { getWeeksGreeting } from "@/lib/api/dashboardApi";
+import {
+  getWeeksGreeting,
+  getWeeksGreetingPublic,
+} from "@/lib/api/dashboardApi";
+import { useAuthStore } from "@/lib/store/authStore";
 import GreetingBlock from "@/components/dashboard/GreetingBlock/GreetingBlock";
 import StatusBlock from "@/components/dashboard/StatusBlock/StatusBlock";
 import BabyTodayCard from "@/components/dashboard/BabyTodayCard/BabyTodayCard";
 import MomTipCard from "@/components/dashboard/MomTipCard/MomTipCard";
 
-export default function DashboardClient() {
-  const {
-    data: weeksGreeting,
-    isLoading,
-    isError,
-  } = useQuery({
+const DashboardClient = () => {
+  const user = useAuthStore((state) => state.user);
+
+  const personalQuery = useQuery({
     queryKey: ["weeksGreeting"],
     queryFn: getWeeksGreeting,
+    enabled: !!user,
   });
+
+  const publicQuery = useQuery({
+    queryKey: ["weeksGreetingPublic"],
+    queryFn: getWeeksGreetingPublic,
+    enabled: !user,
+  });
+
+  const activeQuery = user ? personalQuery : publicQuery;
+  const weeksGreeting = activeQuery.data;
+  const isError = activeQuery.isError;
+  const isLoading = activeQuery.isLoading;
 
   return (
     <>
@@ -37,3 +51,5 @@ export default function DashboardClient() {
     </>
   );
 }
+
+export default DashboardClient;
