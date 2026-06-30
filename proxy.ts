@@ -38,9 +38,11 @@ const proxy = async (request: NextRequest) => {
           const parsed = parse(cookieStr);
 
           const options = {
+            expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
             path: parsed.Path || "/",
             maxAge: parsed["Max-Age"] ? Number(parsed["Max-Age"]) : undefined,
-            expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
+            secure: true,
+            sameSite: "lax" as const,
           };
 
           if (parsed.accessToken) {
