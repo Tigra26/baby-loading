@@ -21,6 +21,12 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
 
         const user = await getUser();
+
+        if (!user) {
+          clearIsAuthenticated();
+          return;
+        }
+
         setUser(user);
       } catch {
         clearIsAuthenticated();
