@@ -5,12 +5,26 @@ import { useField } from "formik";
 import { Emotion } from "@/types/diary";
 import css from "./EmotionSelect.module.css";
 import { SvgIcon } from "../../shared/SvgIcon/SvgIcon";
+import type {
+  FetchNextPageOptions,
+  InfiniteQueryObserverResult,
+} from "@tanstack/react-query";
 
 interface EmotionSelectProps {
   emotions: Emotion[];
+  fetchNextPage: (
+    options?: FetchNextPageOptions
+  ) => Promise<InfiniteQueryObserverResult>;
+  hasNextPage: boolean;
+  isFetchingNextPage: boolean;
 }
 
-export default function EmotionSelect({ emotions }: EmotionSelectProps) {
+export default function EmotionSelect({
+  emotions,
+  fetchNextPage,
+  hasNextPage,
+  isFetchingNextPage,
+}: EmotionSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const [field, , helpers] = useField<string[]>("emotions");
@@ -26,6 +40,18 @@ export default function EmotionSelect({ emotions }: EmotionSelectProps) {
   const emotionsMap = Object.fromEntries(
     emotions.map((emotion) => [emotion._id, emotion.title])
   );
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
+
+    if (
+      scrollTop + clientHeight >= scrollHeight - 20 &&
+      hasNextPage &&
+      !isFetchingNextPage
+    ) {
+      fetchNextPage();
+    }
+  };
 
   return (
     <div className={css.select}>
@@ -54,7 +80,7 @@ export default function EmotionSelect({ emotions }: EmotionSelectProps) {
       </button>
 
       {isOpen && (
-        <div className={css.dropdown}>
+        <div className={css.dropdown} onScroll={handleScroll}>
           {emotions.map((emotion) => (
             <label key={emotion._id} className={css.option}>
               <input

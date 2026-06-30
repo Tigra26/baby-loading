@@ -7,7 +7,12 @@ import {
   FieldProps,
 } from "formik";
 import { DiaryFormValues } from "@/types/diary";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { diaryFormSchema } from "@/lib/validation/diarySchemas";
 import {
   createDiaryNote,
@@ -42,12 +47,18 @@ const AddDiaryEntryForm = ({
   noteId,
   onClose,
 }: DiaryFormProps) => {
-  const { data } = useQuery({
-    queryKey: ["emotions"],
-    queryFn: getEmotions,
-  });
-
-  const emotions = data?.emotions ?? [];
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["emotions"],
+      queryFn: ({ pageParam = 1 }) => getEmotions(pageParam, 10),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => {
+        return lastPage.page < lastPage.totalPages
+          ? lastPage.page + 1
+          : undefined;
+      },
+    });
+  const emotions = data?.pages.flatMap((page) => page.emotions) ?? [];
 
   const router = useRouter();
 
@@ -114,7 +125,12 @@ const AddDiaryEntryForm = ({
           <label htmlFor="emotions" className={css.label}>
             Категорії
           </label>
-          <EmotionSelect emotions={emotions} />
+          <EmotionSelect
+            emotions={emotions}
+            fetchNextPage={fetchNextPage}
+            hasNextPage={hasNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+          />
           <ErrorMessage
             name="emotions"
             component={"span"}
