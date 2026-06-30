@@ -81,12 +81,14 @@ const AddTaskForm = ({ onClose }: AddTaskFormProps) => {
                       "date",
                       date ? format(date, "yyyy-MM-dd") : ""
                     );
+                    form.setFieldTouched("date", true);
                   }}
-                  error={meta.touched && meta.error ? true : false}
+                  error={Boolean(meta.touched && meta.error)}
                   className={`${css.input} ${css.dateInput}`}
                   placeholderText={format(new Date(), "dd.MM.yyyy")}
                   id="date"
                   showIcon={false}
+                  minDate={new Date()}
                 />
               )}
             </Field>

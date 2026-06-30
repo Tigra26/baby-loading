@@ -68,8 +68,11 @@ const Breadcrumbs = ({ currentPageName }: BreadcrumbsProps) => {
           <li className={css.item} key={href}>
             <SvgIcon name="separator" size={24} className={css.separatorIcon} />
 
-            {isLast ? (
-              <span className={css.current} aria-current="page">
+            {isLast || href === "/journey" ? (
+              <span
+                className={isLast ? css.current : css.disabledCrumb}
+                aria-current={isLast ? "page" : undefined}
+              >
                 {label}
               </span>
             ) : (

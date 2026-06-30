@@ -18,6 +18,7 @@ type CustomDatePickerProps = {
   className?: string;
   error?: boolean;
   showIcon?: boolean;
+  minDate?: Date;
 };
 
 export const CustomDatePicker = ({
@@ -28,6 +29,7 @@ export const CustomDatePicker = ({
   className = "",
   error = false,
   showIcon = true,
+  minDate,
 }: CustomDatePickerProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,6 +48,7 @@ export const CustomDatePicker = ({
           onChange(date);
           setIsOpen(false);
         }}
+        minDate={minDate}
         dateFormat="dd.MM.yyyy"
         placeholderText={placeholderText}
         id={id}
@@ -74,7 +77,7 @@ export const CustomDatePicker = ({
                 onClick={decreaseMonth}
                 disabled={prevMonthButtonDisabled}
                 className={css.headerBtn}
-                aria-label="Previous Month"
+                aria-label="Попередній місяць"
               >
                 <span className={css.arrowLeft}></span>
               </button>
@@ -86,7 +89,7 @@ export const CustomDatePicker = ({
                 onClick={increaseMonth}
                 disabled={nextMonthButtonDisabled}
                 className={css.headerBtn}
-                aria-label="Next Month"
+                aria-label="Наступний місяць"
               >
                 <span className={css.arrowRight}></span>
               </button>
