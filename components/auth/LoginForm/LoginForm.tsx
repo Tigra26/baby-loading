@@ -8,8 +8,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { loginSchema } from "@/lib/validation/authSchemas";
-import { User } from "@/types/user";
 import { useAuthStore } from "@/lib/store/authStore";
+import { isAxiosError } from "axios";
+import { MoonLoader } from "react-spinners";
+import { useState } from "react";
 
 const initialValues = {
   email: "",
@@ -17,17 +19,24 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const [isAuthError, setIsAuthError] = useState(false);
   const { setUser } = useAuthStore();
   const router = useRouter();
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ["login"],
     mutationFn: login,
-    onSuccess: (data: User) => {
-      setUser(data);
+    onSuccess: (data) => {
+      setUser(data.user);
       router.replace("/");
     },
     onError: (error) => {
-      toast.error(error.message);
+      if (isAxiosError(error)) {
+        if (error.status === 401) {
+          setIsAuthError(true);
+          return;
+        }
+      }
+      toast.error("Лелека не знає що це за помилка, спробуйте ще раз");
     },
   });
 
@@ -78,10 +87,13 @@ const LoginForm = () => {
             />
           </div>
           <button type="submit" className={css.loginFormsButton}>
-            Увійти
+            {isPending ? <MoonLoader size={15} /> : "Увійти"}
           </button>
         </Form>
       </Formik>
+      {isAuthError && (
+        <p className={css.authErrorAuth}>Невірний логін або пароль</p>
+      )}
       <div className={css.authRedirect}>
         <p>Немає аккаунту?</p>
         <Link href="/auth/register" className={css.redirectLink}>

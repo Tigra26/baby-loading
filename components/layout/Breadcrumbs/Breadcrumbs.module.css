@@ -1,4 +1,5 @@
 .breadcrumbs {
+  margin-top: 24px;
   margin-bottom: 16px;
 }
 
@@ -47,6 +48,10 @@
   width: 24px;
   height: 24px;
   color: var(--color-scheme-text);
+}
+.disabledCrumb {
+  color: var(--color-scheme-text);
+  cursor: default;
 }
 
 @media screen and (min-width: 1440px) {

@@ -22,7 +22,6 @@ const GENDER_OPTIONS = [
 export const ProfileEditForm = () => {
   const { user, updateUserFields } = useAuthStore();
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const [focused, setFocused] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -111,6 +110,7 @@ export const ProfileEditForm = () => {
                   {...field}
                   id="email"
                   type="email"
+                  disabled
                   placeholder="hanna@gmail.com"
                   className={`${css.input} ${meta.error && meta.touched ? css.inputError : ""}`}
                 />
@@ -178,43 +178,6 @@ export const ProfileEditForm = () => {
             />
           </div>
 
-          {/* <div className={css.fieldWrapper}>
-            <label htmlFor="dueDate" className={css.fieldLabel}>
-              Планова дата пологів
-            </label>
-            <div className={css.selectWrapper}>
-              <Field name="dueDate">
-                {({ field, form, meta }: FieldProps) => {
-                  const selectedDate = field.value
-                    ? new Date(field.value)
-                    : null;
-
-                  return (
-                    <CustomDatePicker
-                      id="dueDate"
-                      selected={selectedDate}
-                      error={Boolean(meta.error && meta.touched)}
-                      placeholderText="16.07.2025"
-                      onChange={(date: Date | null) => {
-                        form.setFieldValue(
-                          "dueDate",
-                          date ? date.toISOString().split("T")[0] : ""
-                        );
-                        form.setFieldTouched("dueDate", true);
-                      }}
-                    />
-                  );
-                }}
-              </Field>
-              <ArrowDownIcon className={css.selectIcon} />
-            </div>
-            <ErrorMessage
-              name="dueDate"
-              className={css.errorMessage}
-              component="span"
-            />
-          </div> */}
-
           <div className={css.fieldWrapper}>
             <label htmlFor="dueDate" className={css.fieldLabel}>
               Планова дата пологів
@@ -230,6 +193,7 @@ export const ProfileEditForm = () => {
                     error={Boolean(meta.error && meta.touched)}
                     placeholderText="16.07.2025"
                     className={css.input}
+                    minDate={new Date()}
                     onChange={(date: Date | null) => {
                       form.setFieldValue(
                         "dueDate",

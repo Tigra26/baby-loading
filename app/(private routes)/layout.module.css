@@ -4,7 +4,7 @@
 }
 
 .contentWrapper {
-  min-height: 100vh;
+  margin: 0 auto;
 }
 
 /* main content */
@@ -15,10 +15,13 @@
 }
 
 .mainInner {
-  width: 100%;
+  width: 1128px;
   max-width: 375px;
   margin: 0 auto;
-  padding: 24px 32px;
+  padding: 0 20px;
+  @media screen and (min-width: 768px) {
+    padding: 0 32px;
+  }
 }
 
 /* tablet */
@@ -32,11 +35,12 @@
 @media screen and (min-width: 1440px) {
   .contentWrapper {
     display: flex;
+    width: 1440px;
   }
 
-  .main {
+  /* .main {
     margin-left: 312px;
-  }
+  } */
 
   .mainInner {
     max-width: 1128px;

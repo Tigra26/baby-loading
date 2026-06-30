@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Baby Loading
 
-## Getting Started
+## Опис проєкту
 
-First, run the development server:
+**Baby Loading** — це вебзастосунок для майбутніх мам, який допомагає
+користувачам отримувати корисну інформацію під час вагітності, відстежувати
+важливі етапи, працювати з особистим профілем та користуватися приватними
+розділами застосунку після авторизації.
+
+Проєкт створений як командна frontend-розробка з використанням **Next.js**,
+**React**, **TypeScript** та сучасних інструментів для роботи зі станом,
+формами, API-запитами й валідацією.
+
+## Яку задачу вирішує проєкт
+
+Проєкт допомагає користувачу:
+
+- зареєструватися та увійти в особистий кабінет;
+- пройти onboarding після реєстрації;
+- заповнити базову інформацію профілю;
+- переглядати інформацію, пов'язану з перебігом вагітності;
+- користуватися приватними сторінками застосунку;
+- отримувати повідомлення про успішні або помилкові дії;
+- зручно працювати з адаптивним інтерфейсом на мобільних, планшетних і
+  десктопних пристроях.
+
+## Технології
+
+У проєкті використані:
+
+- **Next.js** — фреймворк для React-застосунків;
+- **React** — бібліотека для створення інтерфейсів;
+- **TypeScript** — типізація JavaScript-коду;
+- **CSS Modules** — локальні стилі для компонентів;
+- **Tailwind CSS** — утилітарний CSS-фреймворк;
+- **PostCSS** — інструмент для обробки CSS;
+- **TanStack Query** — робота із серверним станом та API-запитами;
+- **Axios** — HTTP-клієнт для запитів до API;
+- **Zustand** — керування клієнтським станом;
+- **Formik** — робота з формами;
+- **Yup** — валідація форм;
+- **React Toastify** — toast-повідомлення;
+- **React Datepicker** — вибір дати;
+- **React Spinners** — індикатори завантаження;
+- **SVGR** — робота з SVG як React-компонентами;
+- **ESLint** — перевірка якості коду;
+- **Docker** — контейнеризація застосунку.
+
+## Як запустити проєкт локально
+
+### 1. Клонувати репозиторій
+
+```bash
+git clone https://github.com/Tigra26/baby-loading.git
+```
+
+### 2. Перейти в папку проєкту
+
+```bash
+cd baby-loading
+```
+
+### 3. Встановити залежності
+
+```bash
+npm install
+```
+
+### 4. Створити файл змінних середовища
+
+Створи файл `.env.local` у корені проєкту та додай необхідні змінні середовища
+за прикладом з файлу `.env.template`.
+
+### 5. Запустити проєкт у режимі розробки
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 6. Відкрити проєкт у браузері
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Доступні скрипти
 
-## Learn More
+### Запуск проєкту в режимі розробки
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Створення production-збірки
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+### Запуск production-збірки
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Перевірка коду лінтером
+
+```bash
+npm run lint
+```
+
+## Структура проєкту
+
+```txt
+baby-loading/
+├── app/                  # Сторінки, layout-и та маршрути Next.js App Router
+├── assets/               # Статичні ресурси, які використовуються в коді
+├── components/           # Повторно використовувані React-компоненти
+├── hooks/                # Кастомні React-хуки
+├── lib/                  # API-запити, store, валідація та допоміжна логіка
+├── providers/            # Провайдери для глобального стану та бібліотек
+├── public/
+│   └── images/           # Публічні зображення
+├── types/                # TypeScript-типи
+├── .env.template         # Приклад змінних середовища
+├── docker-compose.yml    # Конфігурація Docker Compose
+├── Dockerfile            # Інструкції для створення Docker-образу
+├── eslint.config.mjs     # Налаштування ESLint
+├── next.config.ts        # Конфігурація Next.js
+├── package.json          # Скрипти, залежності та основна інформація про проєкт
+├── postcss.config.mjs    # Налаштування PostCSS
+├── proxy.ts              # Логіка proxy/middleware
+└── tsconfig.json         # Налаштування TypeScript
+```
+
+## Основний функціонал
+
+- Реєстрація користувача;
+- Авторизація користувача;
+- Onboarding-форма після реєстрації;
+- Приватні маршрути для авторизованих користувачів;
+- Робота з профілем користувача;
+- Перегляд інформації про перебіг вагітності;
+- API-запити до backend;
+- Валідація форм;
+- Toast-повідомлення;
+- Індикатори завантаження;
+- Адаптивна верстка для мобільних, планшетних і десктопних пристроїв.
+
+## Командна робота
+
+Проєкт розробляється командою **[...7 качанів]**. Для роботи використовуються
+окремі Git-гілки, pull request-и та code review.
+
+## Додаткова інформація
+
+Проєкт перебуває в активній розробці. Функціонал, структура сторінок і
+компоненти можуть змінюватися відповідно до технічного завдання.

@@ -6,7 +6,6 @@ import {
   getWeeksGreetingPublic,
 } from "@/lib/api/dashboardApi";
 import { useAuthStore } from "@/lib/store/authStore";
-import GreetingBlock from "@/components/dashboard/GreetingBlock/GreetingBlock";
 import StatusBlock from "@/components/dashboard/StatusBlock/StatusBlock";
 import BabyTodayCard from "@/components/dashboard/BabyTodayCard/BabyTodayCard";
 import MomTipCard from "@/components/dashboard/MomTipCard/MomTipCard";
@@ -28,16 +27,9 @@ const DashboardClient = () => {
 
   const activeQuery = user ? personalQuery : publicQuery;
   const weeksGreeting = activeQuery.data;
-  const isError = activeQuery.isError;
-  const isLoading = activeQuery.isLoading;
 
   return (
-    <>
-      <GreetingBlock />
-
-      {isLoading && <p>Завантаження...</p>}
-      {isError && <p>Не вдалося завантажити дані</p>}
-
+    <div className="flex flex-col justify-between">
       {weeksGreeting && (
         <>
           <StatusBlock
@@ -48,7 +40,7 @@ const DashboardClient = () => {
           <MomTipCard momHint={weeksGreeting.momHint} />
         </>
       )}
-    </>
+    </div>
   );
 }
 

@@ -10,5 +10,17 @@ export const profileSchema = Yup.object().shape({
     .max(64, "Пошта має мати максимум 64 символи")
     .required("Поле email не може бути порожнім"),
   babyGender: Yup.string().required("Оберіть стать дитини"),
-  dueDate: Yup.string().required("Оберіть планову дату пологів"),
+  dueDate: Yup.string()
+    .required("Оберіть планову дату пологів")
+    .test("not-in-past", "Дата пологів не може бути в минулому", (value) => {
+      if (!value) return false;
+
+      const selectedDate = new Date(value);
+      const today = new Date();
+
+      selectedDate.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+
+      return selectedDate >= today;
+    }),
 });

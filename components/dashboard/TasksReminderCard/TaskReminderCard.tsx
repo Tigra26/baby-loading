@@ -12,7 +12,7 @@ const TaskReminderCard = () => {
   const user = useAuthStore((state) => state.user);
 
   const { data } = useQuery({
-    queryKey: ["tasks"],
+    queryKey: ["getTasks"],
     queryFn: () => getTasks(),
     enabled: !!user,
   });
@@ -21,7 +21,7 @@ const TaskReminderCard = () => {
     <div className={css.container}>
       <TasksUpperPart />
 
-      {data && data.length === 0 ? (
+      {(data && data.length === 0) || !data ? (
         <TasksBottomPart />
       ) : (
         <TasksList task={data} />

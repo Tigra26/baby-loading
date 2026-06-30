@@ -1,0 +1,53 @@
+.customToast.Toastify__toast {
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: 16px;
+  background-color: #fff8f4;
+  color: #2f2f2f;
+  font-size: 14px;
+  line-height: 1.4;
+  font-family: inherit;
+  box-shadow: 0 8px 24px rgba(47, 47, 47, 0.12);
+  border: 1px solid #f5f1f0;
+}
+
+.customToast .Toastify__toast-body {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: #2f2f2f;
+}
+
+.customToastProgress.Toastify__progress-bar {
+  background: #fffaf0;
+}
+
+.customToast.Toastify__toast--success {
+  border-color: #a8d8b9;
+  background-color: #f4fff7;
+}
+
+.customToast.Toastify__toast--error {
+  border-color: #efb0a8;
+  background-color: #fff5f4;
+}
+
+.customToast.Toastify__toast--warning {
+  border-color: #efd18a;
+  background-color: #fffaf0;
+}
+
+.customToast.Toastify__toast--info {
+  border-color: #b8d7ef;
+  background-color: #f3f9ff;
+}
+
+.customToast .Toastify__close-button {
+  color: #2f2f2f;
+  opacity: 0.6;
+}
+
+.customToast .Toastify__close-button:hover,
+.customToast .Toastify__close-button:focus {
+  opacity: 1;
+}
