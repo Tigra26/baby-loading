@@ -23,7 +23,9 @@ const proxy = async (request: NextRequest) => {
 
   if (!accessToken) {
     if (refreshToken) {
-      const data = await serverRefreshSession();
+      const data = await serverRefreshSession(
+        request.headers.get("cookie") ?? ""
+      );
       const setCookie = data.headers["set-cookie"];
 
       if (setCookie) {
