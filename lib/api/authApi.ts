@@ -5,13 +5,21 @@ import { User } from "@/types/user";
 interface LoginResponse {
   user: User;
 }
+interface RegisterResponse {
+  status: number;
+}
 
 interface SessionResponse {
   success: boolean;
 }
 
-export const register = async (regData: RegisterProps) => {
-  const response = await apiClient.post("auth/register", regData);
+export const register = async (
+  regData: RegisterProps
+): Promise<RegisterResponse> => {
+  const response = await apiClient.post<RegisterResponse>(
+    "auth/register",
+    regData
+  );
   return response.data;
 };
 
