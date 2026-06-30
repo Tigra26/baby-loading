@@ -24,12 +24,13 @@
   line-height: 1.6;
 }
 
-.emotionalBlock {
+.emotionBlock {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
-.emotional {
+.emotion {
   border: 1px solid var(--opacity-transparent);
   border-radius: 100px;
   padding: 2px 12px;
