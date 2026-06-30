@@ -19,12 +19,12 @@ interface EmotionSelectProps {
   isFetchingNextPage: boolean;
 }
 
-export default function EmotionSelect({
+const EmotionSelect = ({
   emotions,
   fetchNextPage,
   hasNextPage,
   isFetchingNextPage,
-}: EmotionSelectProps) {
+}: EmotionSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [field, , helpers] = useField<string[]>("emotions");
@@ -101,4 +101,6 @@ export default function EmotionSelect({
       )}
     </div>
   );
-}
+};
+
+export default EmotionSelect;
