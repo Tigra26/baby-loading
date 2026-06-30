@@ -1,7 +1,27 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { OnboardingForm } from "@/components/auth/OnboardingForm/OnboardingForm";
 import Logo from "@/components/shared/Logo/Logo";
 import css from "./pageEdit.module.css";
+
+export const metadata: Metadata = {
+  title: "Онбординг",
+  description:
+    "Заповніть базову інформацію профілю, щоб персоналізувати застосунок Лелека.",
+  openGraph: {
+    title: "Онбординг",
+    description:
+      "Заповніть базову інформацію профілю, щоб персоналізувати застосунок Лелека.",
+    url: "/profile/edit",
+    images: ["/images/og-image.png"],
+  },
+  twitter: {
+    title: "Онбординг",
+    description:
+      "Заповніть базову інформацію профілю, щоб персоналізувати застосунок Лелека.",
+    images: ["/images/og-image.png"],
+  },
+};
 
 export default function OnboardingPage() {
   return (

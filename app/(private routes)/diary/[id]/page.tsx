@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import GreetingBlock from "@/components/dashboard/GreetingBlock/GreetingBlock";
 import DiaryList from "@/components/diary/DiaryList/DiaryList";
 import DiaryEntryDetails from "@/components/diary/DiaryEntryDetails/DiaryEntryDetails";
@@ -5,6 +6,45 @@ import DiaryEntryDetails from "@/components/diary/DiaryEntryDetails/DiaryEntryDe
 import { getDiaryList } from "@/lib/api/diaryApi.server";
 
 import css from "./page.module.css";
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const { diaryNotes } = await getDiaryList();
+
+  const note = diaryNotes.find((note) => note._id === id);
+
+  if (!note) {
+    return {
+      title: "Запис не знайдено",
+      description: "Цей запис щоденника не знайдено.",
+    };
+  }
+
+  const description =
+    note.description.length > 140
+      ? `${note.description.slice(0, 140)}...`
+      : note.description;
+
+  return {
+    title: note.title,
+    description,
+    openGraph: {
+      title: note.title,
+      description,
+      url: `/diary/${id}`,
+      images: ["/images/og-image.png"],
+    },
+    twitter: {
+      title: note.title,
+      description,
+      images: ["/images/og-image.png"],
+    },
+  };
+}
 
 const DiaryNotePage = async ({
   params,
