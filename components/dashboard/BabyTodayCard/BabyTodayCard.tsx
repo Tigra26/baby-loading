@@ -25,7 +25,7 @@ const BabyTodayCard = ({ babyToday }: BabyTodayCardProps) => {
           <li className={css.item}>
             <p className={css.listDescr}>
               <span className={css.listSpan}>Розмір: </span>
-              Приблизно {babySize}см
+              Приблизно {babySize} см
             </p>
           </li>
           <li className={css.item}>
