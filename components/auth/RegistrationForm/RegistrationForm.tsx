@@ -11,6 +11,8 @@ import { registerSchema } from "@/lib/validation/authSchemas";
 import { isAxiosError } from "axios";
 import { MoonLoader } from "react-spinners";
 import { useState } from "react";
+import { getUser } from "@/lib/api/userApi";
+import { useAuthStore } from "@/lib/store/authStore";
 
 const initialValues = {
   name: "",
@@ -20,11 +22,13 @@ const initialValues = {
 
 const RegistrationForm = () => {
   const [isRegError, setIsRegError] = useState(false);
+  const { setUser } = useAuthStore();
   const router = useRouter();
   const { mutate, isPending } = useMutation({
-    mutationKey: ["register"],
     mutationFn: register,
-    onSuccess: () => {
+    onSuccess: async () => {
+      const user = await getUser();
+      setUser(user);
       router.replace("/profile/edit");
     },
     onError: (error) => {
