@@ -4,36 +4,20 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Профіль",
-  description: "Профіль користувача",
-
+  description:
+    "Переглядайте та редагуйте особисту інформацію у профілі користувача Лелека.",
   openGraph: {
     title: "Профіль",
-    description: "Профіль користувача",
-    url: "https://baby-loading-nine.vercel.app/profile",
-    siteName: "Лелека",
-    locale: "uk_UA",
-    type: "website",
-    images: [
-      {
-        url: "/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Лелека — персональний помічник для майбутніх мам",
-      },
-    ],
+    description:
+      "Переглядайте та редагуйте особисту інформацію у профілі користувача Лелека.",
+    url: "/profile",
+    images: ["/images/og-image.png"],
   },
-
   twitter: {
     title: "Профіль",
-    description: "Профіль користувача",
-    images: [
-      {
-        url: "/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Лелека — персональний помічник для майбутніх мам",
-      },
-    ],
+    description:
+      "Переглядайте та редагуйте особисту інформацію у профілі користувача Лелека.",
+    images: ["/images/og-image.png"],
   },
 };
 
