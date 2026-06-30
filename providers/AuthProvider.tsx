@@ -5,15 +5,10 @@ import { getUser } from "@/lib/api/userApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useEffect } from "react";
 
-interface AuthProviderProps {
-  children: React.ReactNode;
-}
-
-const AuthProvider = ({ children }: AuthProviderProps) => {
-  const setUser = useAuthStore((state) => state.setUser);
-  const clearIsAuthenticated = useAuthStore(
-    (state) => state.clearIsAuthenticated
-  );
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const authVersion = useAuthStore((s) => s.authVersion);
+  const setUser = useAuthStore((s) => s.setUser);
+  const clearIsAuthenticated = useAuthStore((s) => s.clearIsAuthenticated);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,7 +21,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         }
 
         const user = await getUser();
-
         setUser(user);
       } catch {
         clearIsAuthenticated();
@@ -34,7 +28,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     };
 
     fetchUser();
-  }, [setUser, clearIsAuthenticated]);
+  }, [authVersion, setUser, clearIsAuthenticated]);
 
   return <>{children}</>;
 };
