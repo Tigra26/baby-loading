@@ -2,8 +2,6 @@
   display: flex;
   gap: 16px;
   width: 100%;
-  margin-left: 50%;
-  transform: translateX(-50%);
   overflow-x: auto;
   padding: 0 16px 8px;
   scrollbar-width: none;
@@ -63,4 +61,11 @@
   background-color: var(--color-neutral-lightest);
   opacity: 0.6;
   cursor: default;
+}
+@media screen and (min-width: 1440px) {
+  .list {
+    margin-left: -32px;
+    width: calc(100% + 32px);
+    padding-left: 0;
+  }
 }
