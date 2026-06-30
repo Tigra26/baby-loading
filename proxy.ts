@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { serverRefreshSession } from "./lib/api/serverApi";
+import { serverRefreshSession } from "./lib/api/serverRefreshApi";
 import { parse } from "cookie";
 
 const privateRoutes = ["/profile", "/diary", "/journey"];

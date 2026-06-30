@@ -24,6 +24,9 @@ export async function GET() {
 
       const setCookie = apiRes.headers["set-cookie"];
 
+      console.log("Headers:", apiRes.headers);
+      console.log("Set-Cookie:", apiRes.headers["set-cookie"]);
+
       if (setCookie) {
         const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
         for (const cookieStr of cookieArray) {
