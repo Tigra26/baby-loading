@@ -115,6 +115,11 @@ const AddDiaryEntryForm = ({
             Категорії
           </label>
           <EmotionSelect emotions={emotions} />
+          <ErrorMessage
+            name="emotions"
+            component={"span"}
+            className={css.error}
+          />
         </div>
 
         <div className={css.formGroup}>
