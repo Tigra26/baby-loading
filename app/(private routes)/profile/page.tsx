@@ -1,27 +1,32 @@
+"use client";
+
 import { ProfileEditForm } from "@/components/profile/ProfileEditForm/ProfileEditForm";
 import css from "./profilePage.module.css";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Профіль",
-  description:
-    "Переглядайте та редагуйте особисту інформацію у профілі користувача Лелека.",
-  openGraph: {
-    title: "Профіль",
-    description:
-      "Переглядайте та редагуйте особисту інформацію у профілі користувача Лелека.",
-    url: "/profile",
-    images: ["/images/og-image.png"],
-  },
-  twitter: {
-    title: "Профіль",
-    description:
-      "Переглядайте та редагуйте особисту інформацію у профілі користувача Лелека.",
-    images: ["/images/og-image.png"],
-  },
-};
+import { useAuthStore } from "@/lib/store/authStore";
+import { useQuery } from "@tanstack/react-query";
+import { getUser } from "@/lib/api/userApi";
+import { useEffect } from "react";
 
 const ProfilePage = () => {
+  const setUser = useAuthStore((s) => s.setUser);
+
+  const { data } = useQuery({
+    queryKey: ["user"],
+    queryFn: getUser,
+
+    retry: false,
+    refetchOnMount: true,
+    refetchOnReconnect: true,
+    refetchOnWindowFocus: true,
+    staleTime: 0,
+  });
+
+  useEffect(() => {
+    if (data) {
+      setUser(data);
+    }
+  }, [data, setUser]);
+
   return (
     <main className={css.profilePageMain}>
       <ProfileEditForm />
