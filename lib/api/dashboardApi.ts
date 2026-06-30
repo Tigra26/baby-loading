@@ -6,3 +6,9 @@ export const getWeeksGreeting = async (): Promise<WeeksGreeting> => {
 
   return data;
 };
+
+export const getWeeksGreetingPublic = async (): Promise<WeeksGreeting> => {
+  const { data } = await apiClient.get<WeeksGreeting>("/weeks/greeting/public");
+
+  return data;
+};

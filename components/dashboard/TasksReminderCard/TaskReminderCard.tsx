@@ -14,7 +14,7 @@ const TaskReminderCard = () => {
   const { data } = useQuery({
     queryKey: ["getTasks"],
     queryFn: () => getTasks(),
-    enabled: user !== null,
+    enabled: !!user,
   });
 
   return (
