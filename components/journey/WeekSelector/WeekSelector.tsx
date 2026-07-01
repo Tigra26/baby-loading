@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthStore } from "@/lib/store/authStore";
 import { getGreeting } from "@/lib/api/journeyApi";
@@ -10,6 +11,8 @@ import css from "./WeekSelector.module.css";
 type Props = { selectedWeek: number };
 
 const WeekSelector = ({ selectedWeek }: Props) => {
+  const searchParams = useSearchParams();
+  const currentTab = searchParams.get("tab") ?? "baby";
   const dueDate = useAuthStore((state) => state.user?.dueDate);
   const { data: greeting } = useQuery({
     queryKey: ["greeting"],
@@ -39,7 +42,7 @@ const WeekSelector = ({ selectedWeek }: Props) => {
         return (
           <li key={week}>
             <Link
-              href={`/journey/${week}`}
+              href={`/journey/${week}?tab=${currentTab}`}
               className={`${css.cell}${isActive ? ` ${css.cellActive}` : ""}`}
             >
               <span className={css.number}>{week}</span>
