@@ -1,5 +1,5 @@
 "use client";
-import { login } from "@/lib/api/authApi";
+import { login } from "@/lib/api/clientApi";
 import css from "./LoginForm.module.css";
 import { LoginProps } from "@/types/auth";
 import { useMutation } from "@tanstack/react-query";

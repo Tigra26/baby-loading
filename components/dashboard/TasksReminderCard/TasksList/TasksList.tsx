@@ -5,7 +5,7 @@ import { SvgIcon } from "@/components/shared/SvgIcon/SvgIcon";
 
 import css from "./TasksList.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateTask } from "@/lib/api/tasksApi";
+import { updateTask } from "@/lib/api/clientApi";
 
 interface TasksListProps {
   task: Task[] | undefined;

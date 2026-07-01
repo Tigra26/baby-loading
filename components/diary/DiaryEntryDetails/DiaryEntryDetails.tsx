@@ -1,4 +1,4 @@
-import { getDiaryList } from "@/lib/api/diaryApi.server";
+import { getDiaryList } from "@/lib/api/serverApi";
 import css from "./DiaryEntryDetails.module.css";
 import { DiaryFormValues } from "@/types/diary";
 import EditDiaryButton from "../EditDiaryButton/EditDiaryButton";

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import css from "./DeleteDiaryModal.module.css";
 import Modal from "@/components/shared/Modal/Modal";
-import { deleteDiaryNote } from "@/lib/api/diaryApi";
+import { deleteDiaryNote } from "@/lib/api/clientApi";
 import { toast } from "react-toastify";
 
 interface DeleteDiaryModalProps {

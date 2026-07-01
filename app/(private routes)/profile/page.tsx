@@ -4,7 +4,7 @@ import { ProfileEditForm } from "@/components/profile/ProfileEditForm/ProfileEdi
 import css from "./profilePage.module.css";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useQuery } from "@tanstack/react-query";
-import { getUser } from "@/lib/api/userApi";
+import { getUser } from "@/lib/api/clientApi";
 import { useEffect } from "react";
 
 const ProfilePage = () => {

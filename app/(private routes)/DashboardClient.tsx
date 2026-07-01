@@ -1,10 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import {
-  getWeeksGreeting,
-  getWeeksGreetingPublic,
-} from "@/lib/api/dashboardApi";
+import { getWeeksGreeting, getWeeksGreetingPublic } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import StatusBlock from "@/components/dashboard/StatusBlock/StatusBlock";
 import BabyTodayCard from "@/components/dashboard/BabyTodayCard/BabyTodayCard";
@@ -42,6 +39,6 @@ const DashboardClient = () => {
       )}
     </div>
   );
-}
+};
 
 export default DashboardClient;

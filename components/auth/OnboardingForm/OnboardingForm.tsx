@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { format } from "date-fns";
 
 import { useAuthStore } from "@/lib/store/authStore";
-import { updateProfile, uploadImage } from "@/lib/api/userApi";
+import { updateProfile, uploadImage } from "@/lib/api/clientApi";
 import { CustomDatePicker } from "@/components/shared/Calendar/CustomDatePicker";
 
 import ArrowDownIcon from "@/assets/icons/keyboard_arrow_down.svg";
