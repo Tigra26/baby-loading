@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .cardsWrapper {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .descr,
+  .tipCategory,
+  .tipText {
+    font-size: 16px;
+  }
+}
+
+.card {
+  background: var(--color-scheme-foreground);
+  border: 1px solid var(--color-scheme-border);
+  border-radius: 32px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.innerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--color-scheme-text);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--opacity-neutral-darkest-5);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.descr {
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tipsRows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tipRow {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.tipRight {
+  flex: 1;
+}
+
+.tipCategory {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tipText {
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 1.5;
+}

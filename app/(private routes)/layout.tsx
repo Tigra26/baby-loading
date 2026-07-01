@@ -1,3 +1,4 @@
+import css from "./layout.module.css";
 import Header from "@/components/layout/Header/Header";
 import Sidebar from "@/components/layout/Sidebar/Sidebar";
 import Breadcrumbs from "@/components/layout/Breadcrumbs/Breadcrumbs";
@@ -8,14 +9,19 @@ type PrivateLayoutProps = {
 
 export default function PrivateLayout({ children }: PrivateLayoutProps) {
   return (
-    <div>
+    <div className={css.layout}>
       <Header />
-      <Sidebar />
 
-      <main>
-        <Breadcrumbs />
-        {children}
-      </main>
+      <div className={css.contentWrapper}>
+        <Sidebar />
+
+        <main className={css.main}>
+          <div className={css.mainInner}>
+            <Breadcrumbs />
+            {children}
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

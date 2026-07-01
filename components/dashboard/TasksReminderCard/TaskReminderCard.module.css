@@ -1,0 +1,24 @@
+.container {
+  background: var(--color-scheme-foreground);
+
+  max-width: 335px;
+  width: 100%;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 32px;
+
+  max-height: 688px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 704px;
+    max-height: 671px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 390px;
+    max-height: 499px;
+  }
+}

@@ -1,12 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["192.168.0.102"],
+
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "lehlehka.b.goit.study",
       },
+      {
+        protocol: "https",
+        hostname: "ftp.goit.study",
+      },
+      { protocol: "https", hostname: "res.cloudinary.com" },
     ],
   },
 
@@ -17,6 +24,14 @@ const nextConfig: NextConfig = {
         destination: "https://lehlehka.b.goit.study/:path*",
       },
     ];
+  },
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
   },
 };
 

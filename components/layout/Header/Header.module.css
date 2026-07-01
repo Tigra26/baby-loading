@@ -1,0 +1,11 @@
+.header {
+  @media screen and (min-width: 1440px) {
+    display: none;
+  }
+}
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
