@@ -3,7 +3,7 @@ import Modal from "@/components/shared/Modal/Modal";
 import css from "./Sidebar.module.css";
 import Logo from "@/components/shared/Logo/Logo";
 import { SvgIcon } from "@/components/shared/SvgIcon/SvgIcon";
-import { logout } from "@/lib/api/authApi";
+import { logout } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useSideBarStore } from "@/lib/store/sideBarStore";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -13,7 +13,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { getWeeksGreeting } from "@/lib/api/dashboardApi";
+import { getWeeksGreeting } from "@/lib/api/clientApi";
 
 const Sidebar = () => {
   const [isShowModal, setIsShowModal] = useState(false);

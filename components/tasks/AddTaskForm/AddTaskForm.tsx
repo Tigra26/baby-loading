@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { format, startOfDay, parseISO } from "date-fns";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createTask, TaskCreationProps } from "@/lib/api/tasksApi";
+import { createTask, TaskCreationProps } from "@/lib/api/clientApi";
 import { useState } from "react";
 import taskFormSchema from "@/lib/validation/taskSchemas";
 

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { getWeekBaby, getWeekMom } from "@/lib/api/journeyApi";
+import { getWeekBaby, getWeekMom } from "@/lib/api/clientApi";
 import { WeekBaby, WeekMom, isWeekBaby } from "@/types/journey";
 import Loader from "@/components/shared/Loader/Loader";
 import JourneyTabs from "./JourneyTabs/JourneyTabs";

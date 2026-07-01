@@ -3,7 +3,7 @@ import GreetingBlock from "@/components/dashboard/GreetingBlock/GreetingBlock";
 import DiaryList from "@/components/diary/DiaryList/DiaryList";
 import DiaryEntryDetails from "@/components/diary/DiaryEntryDetails/DiaryEntryDetails";
 
-import { getDiaryList } from "@/lib/api/diaryApi.server";
+import { getDiaryList } from "@/lib/api/serverApi";
 
 import css from "./page.module.css";
 

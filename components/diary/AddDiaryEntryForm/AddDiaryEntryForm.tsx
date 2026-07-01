@@ -10,7 +10,6 @@ import { DiaryFormValues } from "@/types/diary";
 import {
   useInfiniteQuery,
   useMutation,
-  useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
 import { diaryFormSchema } from "@/lib/validation/diarySchemas";
@@ -18,7 +17,7 @@ import {
   createDiaryNote,
   getEmotions,
   updateDiaryNote,
-} from "@/lib/api/diaryApi";
+} from "@/lib/api/clientApi";
 import css from "./AddDiaryEntryForm.module.css";
 import EmotionSelect from "../EmotionSelect/EmotionSelect";
 import { toast } from "react-toastify";

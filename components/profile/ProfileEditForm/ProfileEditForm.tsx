@@ -5,7 +5,7 @@ import { Formik, Form, Field, FieldProps, ErrorMessage } from "formik";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useAuthStore } from "@/lib/store/authStore";
-import { updateProfile } from "@/lib/api/userApi";
+import { updateProfile } from "@/lib/api/clientApi";
 import { profileSchema } from "@/lib/validation/profileSchemas";
 import { ProfileAvatar } from "../ProfileAvatar/ProfileAvatar";
 

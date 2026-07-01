@@ -1,5 +1,5 @@
 "use client";
-import { register } from "@/lib/api/authApi";
+import { register } from "@/lib/api/clientApi";
 import css from "./RegistrationForm.module.css";
 import { RegisterProps } from "@/types/auth";
 import { useMutation } from "@tanstack/react-query";
@@ -11,7 +11,7 @@ import { registerSchema } from "@/lib/validation/authSchemas";
 import { isAxiosError } from "axios";
 import { MoonLoader } from "react-spinners";
 import { useState } from "react";
-import { getUser } from "@/lib/api/userApi";
+import { getUser } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/store/authStore";
 
 const initialValues = {

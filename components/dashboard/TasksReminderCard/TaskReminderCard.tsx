@@ -5,7 +5,7 @@ import TasksUpperPart from "./TasksUpperPart/TasksUpperPart";
 import TasksBottomPart from "./TasksBottomPart/TasksBottomPart";
 import TasksList from "./TasksList/TasksList";
 import { useQuery } from "@tanstack/react-query";
-import { getTasks } from "@/lib/api/tasksApi";
+import { getTasks } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/store/authStore";
 
 const TaskReminderCard = () => {

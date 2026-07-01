@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthStore } from "@/lib/store/authStore";
-import { getGreeting } from "@/lib/api/journeyApi";
+import { getGreeting } from "@/lib/api/clientApi";
 import { PREGNANCY_WEEKS, getCurrentWeek } from "@/lib/utils/pregnancy";
 import css from "./WeekSelector.module.css";
 

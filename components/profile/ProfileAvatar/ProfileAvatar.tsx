@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { useAuthStore } from "@/lib/store/authStore";
-import { uploadImage } from "@/lib/api/userApi";
+import { uploadImage } from "@/lib/api/clientApi";
 import { toast } from "react-toastify";
 import styles from "./ProfileAvatar.module.css";
 
