@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { getWeekBaby, getWeekMom } from "@/lib/api/journeyApi";
@@ -15,8 +16,19 @@ type Props = {
   weekNumber: number;
 };
 
+type JourneyTab = "baby" | "mom";
+
 const JourneyDetails = ({ weekNumber }: Props) => {
-  const [tab, setTab] = useState<"baby" | "mom">("baby");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const tab: JourneyTab = searchParams.get("tab") === "mom" ? "mom" : "baby";
+
+  const handleTabChange = (nextTab: JourneyTab) => {
+    router.replace(`/journey/${weekNumber}?tab=${nextTab}`, {
+      scroll: false,
+    });
+  };
 
   const { data, isPending, isError } = useQuery<WeekBaby | WeekMom>({
     queryKey: ["week", weekNumber, tab],
@@ -32,7 +44,8 @@ const JourneyDetails = ({ weekNumber }: Props) => {
 
   return (
     <div className={css.container}>
-      <JourneyTabs activeTab={tab} onChange={setTab} />
+      <JourneyTabs activeTab={tab} onChange={handleTabChange} />
+
       {isPending ? (
         <Loader variant="private" />
       ) : isError ? (

@@ -90,7 +90,12 @@
   transition: background-color 250ms ease;
 
   @media screen and (min-width: 768px) {
-    max-width: 218px;
+    width: 218px;
+    height: 38px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 218px;
+    height: 42px;
   }
 }
 
